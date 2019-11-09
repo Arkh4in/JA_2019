@@ -38,7 +38,11 @@ namespace JA_19
         {
             if(IsColliding(bg, room))
             {
-                return MergeLayouts(bg, Layout.AsInvalid(room.Layout), room.Pos, room.Layout.Size);
+                return MergeLayouts(bg, Layout.AsInvalid(room.Layout, Settings.WallKey), room.Pos, room.Layout.Size);
+            }
+            else if(!IsDoorValid(bg, room))
+            {
+                return MergeLayouts(bg, Layout.AsInvalid(room.Layout, Settings.DoorKey), room.Pos, room.Layout.Size);
             }
             return MergeLayouts(bg, room.Layout, room.Pos, room.Layout.Size);
         }
@@ -71,6 +75,32 @@ namespace JA_19
                     {
                         if (bg.Content[room.Pos.X + i, room.Pos.Y + j] != 'a')
                             return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        //Cryptic
+        public static bool IsDoorValid(Layout bg, Room room)
+        {
+            var doors = room.Layout.DoorCoordinatesList;
+            foreach(var v in doors)
+            {
+                int minX = Math.Max(0, v.X + -1 + room.Pos.X);
+                int minY = Math.Max(0, v.Y + -1 + room.Pos.Y);
+
+                int maxX = Math.Min(bg.Size.X, v.X + 1 + room.Pos.X);
+                int maxY = Math.Min(bg.Size.Y, v.Y + 1 + room.Pos.Y);
+
+                for(int i = minX; i <= maxX; i++)
+                {
+                    for (int j = minY; j <= maxY; j++)
+                    {
+                        if(bg.Content[i, j] == Settings.DoorKey)
+                        {
+                            return i == v.X + room.Pos.X || j == v.Y + room.Pos.Y;
+                        }
                     }
                 }
             }

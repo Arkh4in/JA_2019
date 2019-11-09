@@ -16,7 +16,8 @@ namespace JA_19
             background.Content[0, 0] = Settings.WallKey;
             Room room = RoomFactory.CreateRandomRoom();
 
-            DisplayHelper.DisplayGameState(background, room);
+            GameplayLoop gl = new GameplayLoop();
+            gl.MainLoop();
         }
     }
 }
