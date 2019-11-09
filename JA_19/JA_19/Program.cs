@@ -15,7 +15,7 @@ namespace JA_19
             DisplayHelper dh = new DisplayHelper();
             dh.Test();
 			
-            Layout background = new Layout(32,32);
+            Layout background = new Layout(32,32,8);
             background.Display();
 
             Vector2 roomCoordinates = new Vector2(5, 3);
