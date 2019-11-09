@@ -8,8 +8,15 @@ namespace JA_19
 {
     public class Vector2
     {
-        public int X { get; private set; }
-        public int Y { get; private set; }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public Vector2(Vector2 cpy)
+        {
+            X = cpy.X;
+            Y = cpy.Y;
+        }
 
         public Vector2(int _x, int _y)
         {
@@ -17,24 +24,14 @@ namespace JA_19
             Y = _y;
         }
 
-        public Vector2 Add(Vector2 vector2) 
+        public static Vector2 operator + (Vector2 v1, Vector2 v2) 
         {
-            int newX, newY;
-            newX = this.X + vector2.X;
-            newY = this.Y + vector2.Y;
-
-            Vector2 v = new Vector2(newX, newY);
-            return v;
+            return new Vector2(v1.X + v2.X, v1.Y + v2.Y);
         }
 
-        public Vector2 Substract(Vector2 vector2)
+        public static Vector2 operator - (Vector2 v1, Vector2 v2)
         {
-            int newX, newY;
-            newX = this.X - vector2.X;
-            newY = this.Y - vector2.Y;
-
-            Vector2 v = new Vector2(newX, newY);
-            return v;
+            return new Vector2(v1.X - v2.X, v1.Y - v2.Y);
         }
 
     }

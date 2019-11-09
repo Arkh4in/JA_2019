@@ -10,11 +10,7 @@ namespace JA_19
     {
         //Prop & Constructors//
         static void Main(string[] args)
-        {
-			
-            DisplayHelper dh = new DisplayHelper();
-            dh.Test();
-			
+        {			
             Layout background = new Layout(32,32,8);
             background.Display();
 

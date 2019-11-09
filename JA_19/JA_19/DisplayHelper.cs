@@ -19,9 +19,9 @@ namespace JA_19
             Console.SetCursorPosition(0, 0);
             int currentColor = layout.Content[0, 0];
             Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
-            for (int i = 0; i < layout.Size.x; i++)
+            for (int i = 0; i < layout.Size.X; i++)
             {
-                for (int j = 0; j < layout.Size.y; j++)
+                for (int j = 0; j < layout.Size.Y; j++)
                 {
                     if (currentColor != layout.Content[i, j])
                     {
@@ -47,14 +47,14 @@ namespace JA_19
         {
             Layout l = new Layout(bg);
             char buffer;
-            for (int i = 0; i < size.x; i++)
+            for (int i = 0; i < size.X; i++)
             {
-                for (int j = 0; j < size.y; j++)
+                for (int j = 0; j < size.Y; j++)
                 {
                     buffer = room.Content[i, j];
                     if (buffer != 'a')
                     {
-                        l.Content[pos.x + i, pos.y + j] = buffer;
+                        l.Content[pos.X + i, pos.Y + j] = buffer;
                     }
                 }
             }
@@ -63,13 +63,13 @@ namespace JA_19
 
         public static bool IsColliding(Layout bg, Room room)
         {
-            for (int i = 0; i < room.RoomLayout.Size.x; i++)
+            for (int i = 0; i < room.RoomLayout.Size.X; i++)
             {
-                for (int j = 0; j < room.RoomLayout.Size.y; j++)
+                for (int j = 0; j < room.RoomLayout.Size.Y; j++)
                 {
                     if (room.RoomLayout.Content[i, j] != 'a')
                     {
-                        if (bg.Content[room.Coordinates.x + i, room.Coordinates.y + j] != 'a')
+                        if (bg.Content[room.Coordinates.X + i, room.Coordinates.Y + j] != 'a')
                             return true;
                     }
                 }
