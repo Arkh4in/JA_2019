@@ -13,7 +13,7 @@ namespace JA_19
         {
 			
             DisplayHelper dh = new DisplayHelper();
-            //dh.Test();
+            dh.Test();
 			
             Layout background = new Layout(32,32);
             background.Display();
