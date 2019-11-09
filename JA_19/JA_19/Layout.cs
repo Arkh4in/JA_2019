@@ -10,20 +10,25 @@ namespace JA_19
     {
         // Prop & Constructors //
         public List<Vector2> DoorCoordinatesList { get; private set; }
+
         public char[,] LayoutArray { get; private set;  }
 
-        public Layout(int a, int b)
+        public Layout(int sizeX, int sizeY, int doorAmount)
         {
-            List<Vector2> doorCoordinatesList = new List<Vector2>();
-            DoorCoordinatesList = doorCoordinatesList;
-
-            char[,] cArray = new char[a, b];
-
-            for (int i = 0; i < a; i++)
+            DoorCoordinatesList = new List<Vector2>();
+            for(int i = 0; i < doorAmount; i++)
             {
-                for (int j = 0; j < b; j++)
+                //TODO : set the coordinates
+                DoorCoordinatesList.Add(new Vector2(0, 0));
+            }
+
+            char[,] cArray = new char[sizeX, sizeY];
+
+            for (int i = 0; i < sizeX; i++)
+            {
+                for (int j = 0; j < sizeY; j++)
                 {
-                    cArray[i, j] = '0';
+                    cArray[i, j] = 'a';
                 }
             }
 
@@ -31,7 +36,7 @@ namespace JA_19
         }
 
         // Display //
-
+        //TODO : to remove, use display helper
         public void Display()
         {
             foreach (char c in LayoutArray)

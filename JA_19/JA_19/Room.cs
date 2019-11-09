@@ -10,19 +10,22 @@ namespace JA_19
     {
         //Prop & Constructors//
         public Layout RoomLayout { get; set; }
+
         public int Area { get; set; }
-        public int DoorNb { get; set; }
+
+        public int DoorAmount { get; set; }
+
         public Vector2 Coordinates { get; set; }
 
-        public Room(int doorNb, Vector2 coordinates, int length, int width)
+        public Room(int doorAmount, Vector2 coordinates, int sizeX, int sizeY)
         {
-            DoorNb = doorNb;
+            DoorAmount = doorAmount;
             Coordinates = coordinates;
 
-            Layout layout = new Layout(length, width);
+            Layout layout = new Layout(sizeX, sizeY, doorAmount);
             RoomLayout = layout;
 
-            Area = length * width;
+            Area = sizeX * sizeY;
         }
 
     }
