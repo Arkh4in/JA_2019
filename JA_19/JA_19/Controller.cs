@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace JA_19
 {
-    class Controller
+    public class Controller
     {
+        //Prop & Constructors//
         public char Input { get; private set; }
 
         public Controller() { }
 
-        public void Move(Vector2 fromCoordinates)
+        //Methods//
+        public void Move(Room selectedRoom)
         {
             char input = Console.ReadKey().KeyChar;
             bool b = true;
@@ -23,25 +25,25 @@ namespace JA_19
                 {
                     case 'z':
                         {
-                            moveUp(fromCoordinates);
+                            selectedRoom.moveUp();
                             b = false;
                             break;
                         }
                     case 's':
                         {
-                            moveDown(fromCoordinates);
+                            selectedRoom.moveDown();
                             b = false;
                             break;
                         }
                     case 'q':
                         {
-                            moveLeft(fromCoordinates);
+                            selectedRoom.moveLeft();
                             b = false;
                             break;
                         }
                     case 'd':
                         {
-                            moveRight(fromCoordinates);
+                            selectedRoom.moveRight();
                             b = false;
                             break;
                         }
@@ -53,34 +55,5 @@ namespace JA_19
                 }
             }
         }
-
-        public Vector2 moveUp(Vector2 fromCoordinates)
-        {
-            Vector2 newCoord = new Vector2(0, fromCoordinates.Y);
-            newCoord.X = (fromCoordinates.X - 1);
-            return newCoord;
-        }
-
-        public Vector2 moveDown(Vector2 coord)
-        {
-            Vector2 newCoord = new Vector2(0, coord.Y);
-            newCoord.X = (coord.X + 1);
-            return newCoord;
-        }
-
-        public Vector2 moveRight(Vector2 coord)
-        {
-            Vector2 newCoord = new Vector2(coord.X, 0);
-            newCoord.Y = (coord.Y + 1);
-            return newCoord;
-        }
-
-        public Vector2 moveLeft(Vector2 coord)
-        {
-            Vector2 newCoord = new Vector2(coord.X, 0);
-            newCoord.Y = (coord.Y - 1);
-            return newCoord;
-        }
-
     }
 }

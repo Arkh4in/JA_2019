@@ -37,5 +37,26 @@ namespace JA_19
 
             //TODO add door
         }
+
+        // Moving Methods //
+        public void moveUp()
+        {
+            Pos.X = (Pos.X - 1);
+        }
+
+        public void moveDown()
+        {
+            Pos.X = (Pos.X + 1);
+        }
+
+        public void moveRight()
+        {
+            Pos.Y = (Pos.Y + 1);
+        }
+
+        public void moveLeft()
+        {
+            Pos.Y = (Pos.Y - 1);
+        }
     }
 }

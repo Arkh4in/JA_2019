@@ -8,7 +8,7 @@ namespace JA_19
 {
     public class Vector2
     {
-
+        //Prop & Constructors//
         public int X { get; set; }
         public int Y { get; set; }
 
@@ -24,6 +24,7 @@ namespace JA_19
             Y = _y;
         }
 
+        //Methods//
         public static Vector2 operator + (Vector2 v1, Vector2 v2) 
         {
             return new Vector2(v1.X + v2.X, v1.Y + v2.Y);

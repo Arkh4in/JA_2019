@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="DisplayHelper.cs" />
+    <Compile Include="GameplayLoop.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="RandomDoorCoordinates.cs" />
     <Compile Include="Room.cs" />
