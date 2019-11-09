@@ -9,7 +9,7 @@ namespace JA_19
     public static class Controller
     {
         //Methods//
-        public static void Move(Room selectedRoom, Layout background)
+        public static bool Move(Room selectedRoom, Layout background)
         {
             bool b = true;
             while (b)
@@ -53,6 +53,15 @@ namespace JA_19
                             b = false;
                             break;
                         }
+                    case ' ':
+                        {
+                            if (DisplayHelper.IsValid(background, selectedRoom))
+                            {
+                                DisplayHelper.MergeRoom(background, selectedRoom);
+                                return true;
+                            }
+                            break;
+                        }
                     default :
                         {
                             Console.WriteLine("Vous devez utiliser Z, Q, S et D pour bouger la salle.");
@@ -60,6 +69,7 @@ namespace JA_19
                         }
                 }
             }
+            return false;
         }
 
         public static int SelectRoomIndex(int roomAmount)

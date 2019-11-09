@@ -44,7 +44,7 @@ namespace JA_19
             _isDoorcoordinatesCached = false;
         }
 
-        public char[,] Content { get; private set; }
+        public char[,] Content { get; set; }
 
         public Vector2 Size { get; }
 

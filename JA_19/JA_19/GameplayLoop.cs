@@ -15,8 +15,22 @@ namespace JA_19
         {
             _background = new Layout(Settings.BackgroundSize);
 
-            _background.Content[0, 0] = Settings.WallKey;
-            _background.Content[2, 9] = Settings.DoorKey;
+            _background.Content[5, 5] = Settings.DoorKey;
+            _background.Content[10, 10] = Settings.DoorKey;
+            _background.Content[20, 20] = Settings.DoorKey;
+
+            _background.Content[0, 5] = Settings.DoorKey;
+            _background.Content[0, 10] = Settings.DoorKey;
+            _background.Content[0, 20] = Settings.DoorKey;
+
+            _background.Content[5,  0] = Settings.DoorKey;
+            _background.Content[10, 0] = Settings.DoorKey;
+            _background.Content[20, 0] = Settings.DoorKey;
+
+            _background.Content[5,  31] = Settings.DoorKey;
+            _background.Content[10, 31] = Settings.DoorKey;
+            _background.Content[20, 31] = Settings.DoorKey;
+
         }
 
         public void MainLoop()
@@ -36,7 +50,10 @@ namespace JA_19
             else
             {
                 DisplayHelper.DisplayGameState(_background, _currentRoom);
-                Controller.Move(_currentRoom, _background);
+                if(Controller.Move(_currentRoom, _background))
+                {
+                    _currentRoom = null;
+                }
             }
         }
 

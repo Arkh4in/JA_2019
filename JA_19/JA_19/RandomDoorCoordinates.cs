@@ -11,7 +11,5 @@ namespace JA_19
         public int randomX { get; set; }
 
         public int randomY { get; set; }
-
-
     }
 }

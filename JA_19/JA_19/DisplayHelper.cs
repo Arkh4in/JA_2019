@@ -81,6 +81,16 @@ namespace JA_19
             return false;
         }
 
+        public static bool IsValid(Layout bg, Room room)
+        {
+            return !IsColliding(bg, room) && IsDoorValid(bg, room);
+        }
+
+        public static void MergeRoom(Layout bg, Room r)
+        {
+            bg.Content = MergeLayouts(bg, r.Layout, r.Pos, r.Layout.Size).Content;
+        }
+
         //Cryptic
         public static bool IsDoorValid(Layout bg, Room room)
         {
