@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JA_19
 {
-    class Room
+    public class Room
     {
         //Prop & Constructors//
         public Layout RoomLayout { get; set; }

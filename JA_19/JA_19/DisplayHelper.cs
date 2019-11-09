@@ -6,87 +6,75 @@ using System.Threading.Tasks;
 
 namespace JA_19
 {
-    public class DisplayHelper
+    public static class DisplayHelper
     {
-        public void Test()
+        public static void DisplayGameState(Layout background, Room room)
         {
-            char[,] cArray = new char[32, 32];
-            for (int i = 0; i < 32; i++)
-            {
-                for (int j = 0; j < 32; j++)
-                {
-                    cArray[i, j] = 'b';
-                }
-            }
-
-            char[,] cArray2 = new char[10, 8]
-            {
-                {'g', 'g', 'c', 'g', 'g', 'g', 'g', 'g' },
-                {'g', 'f', 'f', 'f', 'f', 'f', 'f', 'g' },
-                {'g', 'f', 'f', 'a', 'f', 'f', 'f', 'g' },
-                {'c', 'f', 'f', 'a', 'f', 'f', 'f', 'g' },
-                {'g', 'f', 'f', 'a', 'f', 'f', 'f', 'g' },
-                {'g', 'f', 'f', 'a', 'f', 'f', 'f', 'c' },
-                {'g', 'f', 'f', 'a', 'f', 'f', 'f', 'g' },
-                {'g', 'f', 'f', 'a', 'f', 'f', 'f', 'g' },
-                {'g', 'f', 'f', 'f', 'f', 'f', 'f', 'g' },
-                {'g', 'g', 'g', 'g', 'c', 'g', 'g', 'g' }
-            };
-
-            char[,] cArray3 = new char[5, 5]
-            {
-                {'g', 'g', 'c', 'g', 'g' },
-                {'g', 'f', 'f', 'f', 'g' },
-                {'g', 'f', 'f', 'f', 'c' },
-                {'g', 'f', 'f', 'f', 'g' },
-                {'g', 'g', 'g', 'c', 'g' }
-            };
-
-            MergeLayouts(cArray, cArray2, 10, 10, 10, 8);
-            MergeLayouts(cArray, cArray3, 20, 20, 5, 5);
-
-            MergeLayouts(cArray, cArray2, 20, 0, 10, 8);
-            MergeLayouts(cArray, cArray3, 0, 20, 5, 5);
-
-
-            Console.SetWindowSize(33, 33);
-
-            var v = DateTime.Now;
-
-            for (int c = 0; c < 100; c++)
-            {
-                Console.SetCursorPosition(0, 0);
-                int currentColor = cArray[0, 0];
-                Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
-                for (int i = 0; i < 32; i++)
-                {
-                    for (int j = 0; j < 32; j++)
-                    {
-                        if (currentColor != cArray[i, j])
-                        {
-                            currentColor = cArray[i, j];
-                            Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
-                        }
-                        Console.Write(" ");
-                    }
-                    Console.Write("\n");
-                }
-            }
-            var delta = (DateTime.Now - v).TotalMilliseconds;
+            Layout graphicLayout = MergeWithCollision(background, room);
+            DisplayLayout(graphicLayout);
         }
 
-        public void MergeLayouts(char[,] bg, char[,] room, int pX, int pY, int sX, int sY)
+        private static void DisplayLayout(Layout layout)
         {
-            for (int i = 0; i < sX; i++)
+            Console.SetCursorPosition(0, 0);
+            int currentColor = layout.Content[0, 0];
+            Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
+            for (int i = 0; i < layout.Size.x; i++)
             {
-                for (int j = 0; j < sY; j++)
+                for (int j = 0; j < layout.Size.y; j++)
                 {
-                    if (room[i, j] != 'a')
+                    if (currentColor != layout.Content[i, j])
                     {
-                        bg[pX + i, pY + j] = room[i, j];
+                        currentColor = layout.Content[i, j];
+                        Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
+                    }
+                    Console.Write(" ");
+                }
+                Console.Write("\n");
+            }
+        }
+
+        private static Layout MergeWithCollision(Layout bg, Room room)
+        {
+            if(IsColliding(bg, room))
+            {
+                MergeLayouts(bg, new JA_19.Layout(room.RoomLayout.Size, 0), room.Coordinates, room.RoomLayout.Size);
+            }
+            return MergeLayouts(bg, room.RoomLayout, room.Coordinates, room.RoomLayout.Size);
+        }
+
+        private static Layout MergeLayouts(Layout bg, Layout room, Vector2 pos, Vector2 size)
+        {
+            Layout l = new Layout(bg);
+            char buffer;
+            for (int i = 0; i < size.x; i++)
+            {
+                for (int j = 0; j < size.y; j++)
+                {
+                    buffer = room.Content[i, j];
+                    if (buffer != 'a')
+                    {
+                        l.Content[pos.x + i, pos.y + j] = buffer;
                     }
                 }
             }
+            return l;
+        }
+
+        public static bool IsColliding(Layout bg, Room room)
+        {
+            for (int i = 0; i < room.RoomLayout.Size.x; i++)
+            {
+                for (int j = 0; j < room.RoomLayout.Size.y; j++)
+                {
+                    if (room.RoomLayout.Content[i, j] != 'a')
+                    {
+                        if (bg.Content[room.Coordinates.x + i, room.Coordinates.y + j] != 'a')
+                            return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
