@@ -13,7 +13,7 @@ namespace JA_19
 
         public GameplayLoop()
         {
-            _background = Layout.EmptyLayout(Settings.BackgroundSize);
+            _background = new Layout(Settings.BackgroundSize);
 
             _background.Content[0, 0] = Settings.WallKey;
             _background.Content[2, 9] = Settings.DoorKey;

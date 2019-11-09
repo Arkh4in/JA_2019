@@ -22,7 +22,7 @@ namespace JA_19
             Pos = coordinates;
 
             Area = size.X * size.Y;
-            Layout = Layout.EmptyLayout(size);
+            Layout = new Layout(size, Settings.BedRoomKey);
             for(int i = 0; i < size.X; i++)
             {
                 Layout.Content[i, 0] = Settings.WallKey;

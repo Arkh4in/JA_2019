@@ -54,10 +54,17 @@ namespace JA_19
             Content = (char[,])copy.Content.Clone();
         }
 
-        public Layout(Vector2 size)
+        public Layout(Vector2 size, char initChar = (char)97)
         {
             Size = new Vector2(size);
             Content = new char[size.X, size.Y];
+            for (int i = 0; i < size.X; i++)
+            {
+                for (int j = 0; j < size.Y; j++)
+                {
+                    Content[i, j] = initChar;
+                }
+            }
         }
 
         public static Layout AsInvalid(Layout l, char invalidKey)
@@ -76,48 +83,9 @@ namespace JA_19
             return copy;
         }
 
-        public static Layout EmptyLayout(Vector2 size)
-        {
-            Layout l = new Layout(size);
-            for (int i = 0; i < size.X; i++)
-            {
-                for (int j = 0; j < size.Y; j++)
-                {
-                    l.Content[i, j] = Settings.EmptyKey;
-                }
-            }
-            return l;
-        }
-
         public void AddDoor(Vector2 vector)
         {
             Content[vector.X, vector.Y] = Settings.DoorKey;
         }
-
-        //public Layout(Vector2 size, char[,] content)
-        //{
-        //    Size = size;
-
-        //    DoorCoordinatesList = new List<Vector2>();
-        //    for(int i = 0; i < doorAmount; i++)
-        //    {
-
-        //        //TODO : set the coordinates
-        //        RandomDoorCoordinates randomCoordinates = new RandomDoorCoordinates(size.X, size.Y);
-        //        DoorCoordinatesList.Add(new Vector2(randomCoordinates.randomX, randomCoordinates.randomY));
-        //    }
-
-        //    char[,] cArray = new char[Size.X, Size.Y];
-
-        //    for (int i = 0; i < Size.X; i++)
-        //    {
-        //        for (int j = 0; j < Size.Y; j++)
-        //        {
-        //            cArray[i, j] = 'a';
-        //        }
-        //    }
-
-        //    Content = cArray;
-        //}
     }
 }
