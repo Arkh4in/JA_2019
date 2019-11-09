@@ -18,20 +18,30 @@ namespace JA_19
             {
                 if(!_isDoorcoordinatesCached)
                 {
-                    for(int i = 0; i < Size.X; i++)
-                    {
-                        for(int j = 0; j < Size.Y; j++)
-                        {
-                            if(Content[i, j] == Settings.DoorKey)
-                            {
-                                _doorCoordinates.Add(new Vector2(i, j));
-                            }
-                        }
-                    }
+                    ComputeDoorCoordinate();
                     _isDoorcoordinatesCached = true;
                 }
                 return _doorCoordinates;
             }
+        }
+
+        private void ComputeDoorCoordinate()
+        {
+            for (int i = 0; i < Size.X; i++)
+            {
+                for (int j = 0; j < Size.Y; j++)
+                {
+                    if (Content[i, j] == Settings.DoorKey)
+                    {
+                        _doorCoordinates.Add(new Vector2(i, j));
+                    }
+                }
+            }
+        }
+
+        public void ResetDoorCoordinates()
+        {
+            _isDoorcoordinatesCached = false;
         }
 
         public char[,] Content { get; private set; }
