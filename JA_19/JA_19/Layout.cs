@@ -60,14 +60,14 @@ namespace JA_19
             Content = new char[size.X, size.Y];
         }
 
-        public static Layout AsInvalid(Layout l)
+        public static Layout AsInvalid(Layout l, char invalidKey)
         {
             Layout copy = new Layout(l);
             for (int i = 0; i < l.Size.X; i++)
             {
                 for (int j = 0; j < l.Size.Y; j++)
                 {
-                    if(l.Content[i, j] == Settings.WallKey)
+                    if(l.Content[i, j] == invalidKey)
                     {
                         copy.Content[i, j] = Settings.InvalidKey;
                     }

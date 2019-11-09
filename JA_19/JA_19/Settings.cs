@@ -12,6 +12,6 @@ namespace JA_19
         public static char DoorKey = (char)(ConsoleColor.White + 97);
         public static char WallKey = (char)(ConsoleColor.DarkGray + 97);
         public static char InvalidKey = (char)(ConsoleColor.Red + 97);
-        public static Vector2 BackgroundSize = new Vector2(32, 32);
+        public static Vector2 BackgroundSize = new Vector2(24, 48);
     }
 }
