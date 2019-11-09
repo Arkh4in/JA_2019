@@ -10,7 +10,7 @@ namespace JA_19
     {
         public static void DisplayGameState(Layout background, Room room)
         {
-            Layout graphicLayout = MergeWithCollision(background, room);
+            Layout graphicLayout = MergeWithCheck(background, room);
             DisplayLayout(graphicLayout);
         }
 
@@ -34,11 +34,11 @@ namespace JA_19
             }
         }
 
-        private static Layout MergeWithCollision(Layout bg, Room room)
+        private static Layout MergeWithCheck(Layout bg, Room room)
         {
             if(IsColliding(bg, room))
             {
-                MergeLayouts(bg, new Layout(room.Layout.Size), room.Pos, room.Layout.Size);
+                return MergeLayouts(bg, Layout.AsInvalid(room.Layout), room.Pos, room.Layout.Size);
             }
             return MergeLayouts(bg, room.Layout, room.Pos, room.Layout.Size);
         }

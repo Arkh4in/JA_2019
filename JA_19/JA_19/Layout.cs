@@ -60,17 +60,20 @@ namespace JA_19
             Content = new char[size.X, size.Y];
         }
 
-        public static Layout InvalidLayout(Vector2 size)
+        public static Layout AsInvalid(Layout l)
         {
-            Layout l = new Layout(size);
-            for (int i = 0; i < size.X; i++)
+            Layout copy = new Layout(l);
+            for (int i = 0; i < l.Size.X; i++)
             {
-                for (int j = 0; j < size.Y; j++)
+                for (int j = 0; j < l.Size.Y; j++)
                 {
-                    l.Content[i, j] = Settings.InvalidKey;
+                    if(l.Content[i, j] == Settings.WallKey)
+                    {
+                        copy.Content[i, j] = Settings.InvalidKey;
+                    }
                 }
             }
-            return l;
+            return copy;
         }
 
         public static Layout EmptyLayout(Vector2 size)
