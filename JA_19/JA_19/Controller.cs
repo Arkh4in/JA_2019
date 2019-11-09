@@ -55,9 +55,9 @@ namespace JA_19
                         }
                     case ' ':
                         {
-                            if (DisplayHelper.IsValid(background, selectedRoom))
+                            if (LayoutHelper.IsValid(background, selectedRoom))
                             {
-                                DisplayHelper.MergeRoom(background, selectedRoom);
+                                LayoutHelper.MergeRoom(background, selectedRoom);
                                 return true;
                             }
                             break;
