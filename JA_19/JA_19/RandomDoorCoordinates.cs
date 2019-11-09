@@ -17,9 +17,9 @@ namespace JA_19
             Random random = new Random();
 
             Vector2 vec1 = new Vector2(random.Next(1, sizeX - 2), 0);
-            Vector2 vec2 = new Vector2(random.Next(1, sizeX - 2), sizeY-1);
+            Vector2 vec2 = new Vector2(random.Next(1, sizeX - 2), sizeY - 1);
             Vector2 vec3 = new Vector2(0, random.Next(1, sizeY - 2));
-            Vector2 vec4 = new Vector2(sizeX-1, random.Next(1, sizeY - 2));
+            Vector2 vec4 = new Vector2(sizeX - 1, random.Next(1, sizeY - 2));
 
             List<Vector2> vectorList = new List<Vector2>();
 

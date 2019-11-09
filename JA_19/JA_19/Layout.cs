@@ -40,16 +40,22 @@ namespace JA_19
 
         public Layout(Layout copy)
         {
-            Size = new Vector2(copy.Size.X, copy.Size.Y);
+            Size = new Vector2(copy.Size);
             Content = (char[,])copy.Content.Clone();
         }
 
-        public Layout InvalidLayout(Layout copy)
+        public Layout(Vector2 size)
         {
-            Layout l = new Layout(copy);
-            for(int i = 0; i < Size.X; i++)
+            Size = new Vector2(size);
+            Content = new char[size.X, size.Y];
+        }
+
+        public static Layout InvalidLayout(Vector2 size)
+        {
+            Layout l = new Layout(size);
+            for (int i = 0; i < size.X; i++)
             {
-                for(int j = 0; j < Size.Y; j++)
+                for (int j = 0; j < size.Y; j++)
                 {
                     l.Content[i, j] = Settings.InvalidKey;
                 }
@@ -57,40 +63,43 @@ namespace JA_19
             return l;
         }
 
-        public Layout(Vector2 size, int doorAmount)
+        public static Layout EmptyLayout(Vector2 size)
         {
-            Size = size;
-
-            DoorCoordinatesList = new List<Vector2>();
-            for(int i = 0; i < doorAmount; i++)
+            Layout l = new Layout(size);
+            for (int i = 0; i < size.X; i++)
             {
-
-                //TODO : set the coordinates
-                RandomDoorCoordinates randomCoordinates = new RandomDoorCoordinates(size.X, size.Y);
-                DoorCoordinatesList.Add(new Vector2(randomCoordinates.randomX, randomCoordinates.randomY));
-            }
-
-            char[,] cArray = new char[Size.X, Size.Y];
-
-            for (int i = 0; i < Size.X; i++)
-            {
-                for (int j = 0; j < Size.Y; j++)
+                for (int j = 0; j < size.Y; j++)
                 {
-                    cArray[i, j] = 'a';
+                    l.Content[i, j] = Settings.EmptyKey;
                 }
             }
-
-            Content = cArray;
+            return l;
         }
 
-        // Display //
-        //TODO : to remove, use display helper
-        public void Display()
-        {
-            foreach (char c in Content)
-            {
-                Console.WriteLine(c);
-            }
-        }
+        //public Layout(Vector2 size, char[,] content)
+        //{
+        //    Size = size;
+
+        //    DoorCoordinatesList = new List<Vector2>();
+        //    for(int i = 0; i < doorAmount; i++)
+        //    {
+
+        //        //TODO : set the coordinates
+        //        RandomDoorCoordinates randomCoordinates = new RandomDoorCoordinates(size.X, size.Y);
+        //        DoorCoordinatesList.Add(new Vector2(randomCoordinates.randomX, randomCoordinates.randomY));
+        //    }
+
+        //    char[,] cArray = new char[Size.X, Size.Y];
+
+        //    for (int i = 0; i < Size.X; i++)
+        //    {
+        //        for (int j = 0; j < Size.Y; j++)
+        //        {
+        //            cArray[i, j] = 'a';
+        //        }
+        //    }
+
+        //    Content = cArray;
+        //}
     }
 }

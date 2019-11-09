@@ -38,9 +38,9 @@ namespace JA_19
         {
             if(IsColliding(bg, room))
             {
-                MergeLayouts(bg, new JA_19.Layout(room.RoomLayout.Size, 0), room.Coordinates, room.RoomLayout.Size);
+                MergeLayouts(bg, new Layout(room.RoomLayout.Size), room.Pos, room.RoomLayout.Size);
             }
-            return MergeLayouts(bg, room.RoomLayout, room.Coordinates, room.RoomLayout.Size);
+            return MergeLayouts(bg, room.RoomLayout, room.Pos, room.RoomLayout.Size);
         }
 
         private static Layout MergeLayouts(Layout bg, Layout room, Vector2 pos, Vector2 size)
@@ -69,7 +69,7 @@ namespace JA_19
                 {
                     if (room.RoomLayout.Content[i, j] != 'a')
                     {
-                        if (bg.Content[room.Coordinates.X + i, room.Coordinates.Y + j] != 'a')
+                        if (bg.Content[room.Pos.X + i, room.Pos.Y + j] != 'a')
                             return true;
                     }
                 }

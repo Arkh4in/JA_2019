@@ -15,15 +15,13 @@ namespace JA_19
 
         public int DoorAmount { get; set; }
 
-        public Vector2 Coordinates { get; set; }
+        public Vector2 Pos { get; set; }
 
         public Room(int doorAmount, Vector2 coordinates, int sizeX, int sizeY)
         {
             DoorAmount = doorAmount;
-            Coordinates = coordinates;
-
-            Layout layout = new Layout(sizeX, sizeY, doorAmount);
-            RoomLayout = layout;
+            Pos = coordinates;
+            RoomLayout = new Layout(new Vector2(5, 5));
 
             Area = sizeX * sizeY;
         }
