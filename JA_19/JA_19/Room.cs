@@ -13,13 +13,12 @@ namespace JA_19
 
         public int Area { get; set; }
 
-        public int DoorAmount { get; set; }
+        public int DoorAmount { get; private set; }
 
         public Vector2 Pos { get; set; }
 
-        public Room(int doorAmount, Vector2 coordinates, Vector2 size)
+        public Room(Vector2 coordinates, Vector2 size)
         {
-            DoorAmount = doorAmount;
             Pos = coordinates;
 
             Area = size.X * size.Y;
@@ -35,7 +34,12 @@ namespace JA_19
                 Layout.Content[size.X-1, i] = Settings.WallKey;
             }
 
-            //TODO add door
+        }
+
+        public void AddDoor(Vector2 vector)
+        {
+            Layout.AddDoor(vector);
+            DoorAmount++;
         }
 
         // Moving Methods //

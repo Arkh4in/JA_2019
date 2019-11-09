@@ -89,6 +89,11 @@ namespace JA_19
             return l;
         }
 
+        public void AddDoor(Vector2 vector)
+        {
+            Content[vector.X, vector.Y] = Settings.DoorKey;
+        }
+
         //public Layout(Vector2 size, char[,] content)
         //{
         //    Size = size;
