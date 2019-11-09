@@ -9,7 +9,6 @@ namespace JA_19
     public class Controller
     {
         //Prop & Constructors//
-        public char Input { get; private set; }
 
         public Controller() { }
 
