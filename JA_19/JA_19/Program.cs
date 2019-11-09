@@ -10,6 +10,8 @@ namespace JA_19
     {
         static void Main(string[] args)
         {
+            DisplayHelper dh = new DisplayHelper();
+            dh.Test();
         }
     }
 }
