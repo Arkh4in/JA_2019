@@ -10,7 +10,7 @@ namespace JA_19
     {
         public static Vector2 RandomDoorCoordinates(int sizeX, int sizeY)
         {
-            Random random = new Random();
+            Random random = new Random(DateTime.Now.Second);
 
             Vector2 vec1 = new Vector2(random.Next(1, sizeX - 2), 0);
             Vector2 vec2 = new Vector2(random.Next(1, sizeX - 2), sizeY - 1);
@@ -30,7 +30,7 @@ namespace JA_19
 
         public static Vector2 CreateRandomRoomSize()
         {
-            Random r = new Random();
+            Random r = new Random(DateTime.Now.Second);
             int randX = r.Next(Settings.minSizeX, Settings.maxSizeX);
             int randY = r.Next(Settings.minSizeY, Settings.maxSizeY);
 
@@ -41,13 +41,13 @@ namespace JA_19
 
         public static int RandomizeDoorsAmount()
         {
-            Random r = new Random();
-            return r.Next(Settings.minDoorsAmount, Settings.maxDoorsAmount);
+            Random r = new Random(DateTime.Now.Second);
+            return r.Next(Settings.minDoorsAmount, Settings.maxDoorsAmount + 1);
         }
 
         public static Room CreateRandomRoom()
         {
-            Random r = new Random();
+            Random r = new Random(DateTime.Now.Second);
 
             Vector2 randSize = CreateRandomRoomSize();
             Room room = new Room(new Vector2(0, 0), randSize);
