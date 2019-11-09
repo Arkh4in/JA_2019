@@ -8,10 +8,19 @@ namespace JA_19
 {
     class Program
     {
+        //Prop & Constructors//
         static void Main(string[] args)
         {
+			
             DisplayHelper dh = new DisplayHelper();
             dh.Test();
+			
+            Layout background = new Layout(32,32);
+            background.Display();
+
+            Vector2 roomCoordinates = new Vector2(5, 3);
+
+            Room room = new Room(3, roomCoordinates, 3, 8);
         }
     }
 }
