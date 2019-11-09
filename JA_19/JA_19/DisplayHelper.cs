@@ -28,7 +28,7 @@ namespace JA_19
                         currentColor = layout.Content[i, j];
                         Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
                     }
-                    Console.Write(" ");
+                    Console.Write("  ");
                 }
                 Console.Write("\n");
             }
@@ -90,8 +90,8 @@ namespace JA_19
                 int minX = Math.Max(0, v.X + -1 + room.Pos.X);
                 int minY = Math.Max(0, v.Y + -1 + room.Pos.Y);
 
-                int maxX = Math.Min(bg.Size.X, v.X + 1 + room.Pos.X);
-                int maxY = Math.Min(bg.Size.Y, v.Y + 1 + room.Pos.Y);
+                int maxX = Math.Min(bg.Size.X -1, v.X + 1 + room.Pos.X);
+                int maxY = Math.Min(bg.Size.Y -1, v.Y + 1 + room.Pos.Y);
 
                 for(int i = minX; i <= maxX; i++)
                 {

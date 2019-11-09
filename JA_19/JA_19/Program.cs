@@ -11,7 +11,7 @@ namespace JA_19
         //Prop & Constructors//
         static void Main(string[] args)
         {
-            Console.SetWindowSize(33, 33);
+            Console.SetWindowSize(Settings.BackgroundSize.Y* 2 + 20, Settings.BackgroundSize.X + 10);
             Layout background = Layout.EmptyLayout(new Vector2(32, 32));
             background.Content[0, 0] = Settings.WallKey;
             Room room = RoomFactory.CreateRandomRoom();

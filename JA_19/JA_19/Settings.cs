@@ -14,11 +14,11 @@ namespace JA_19
         public static char InvalidKey = (char)(ConsoleColor.Red + 97);
         public static int minSizeX = 3;
         public static int minSizeY = 3;
-        public static int maxSizeX = 8;
+        public static int maxSizeX = 12;
         public static int maxSizeY = 12;
         public static int minDoorsAmount = 1;
         public static int maxDoorsAmount = 3;
-        public static Vector2 BackgroundSize = new Vector2(24, 48);
+        public static Vector2 BackgroundSize = new Vector2(32, 32);
         public static int RoomSelectionAmount = 3;
     }
 }
