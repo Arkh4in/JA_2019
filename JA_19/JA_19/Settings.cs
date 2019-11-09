@@ -13,5 +13,6 @@ namespace JA_19
         public static char WallKey = (char)(ConsoleColor.DarkGray + 97);
         public static char InvalidKey = (char)(ConsoleColor.Red + 97);
         public static Vector2 BackgroundSize = new Vector2(24, 48);
+        public static int RoomSelectionAmount = 3;
     }
 }

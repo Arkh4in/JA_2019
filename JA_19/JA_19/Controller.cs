@@ -6,43 +6,50 @@ using System.Threading.Tasks;
 
 namespace JA_19
 {
-    public class Controller
+    public static class Controller
     {
-        //Prop & Constructors//
-
-        public Controller() { }
-
         //Methods//
-        public void Move(Room selectedRoom)
+        public static void Move(Room selectedRoom, Layout background)
         {
-            char input = Console.ReadKey().KeyChar;
             bool b = true;
-
             while (b)
             { 
+                char input = Console.ReadKey().KeyChar;
                 switch (input)
                 {
                     case 'z':
                         {
-                            selectedRoom.moveUp();
+                            if(selectedRoom.Pos.X > 0)
+                            {
+                                selectedRoom.moveUp();
+                            }
                             b = false;
                             break;
                         }
                     case 's':
                         {
-                            selectedRoom.moveDown();
+                            if (selectedRoom.Pos.X + selectedRoom.Layout.Size.X < background.Size.X)
+                            {
+                                selectedRoom.moveDown();
+                            }
                             b = false;
                             break;
                         }
                     case 'q':
                         {
-                            selectedRoom.moveLeft();
+                            if (selectedRoom.Pos.Y > 0)
+                            {
+                                selectedRoom.moveLeft();
+                            }
                             b = false;
                             break;
                         }
                     case 'd':
                         {
-                            selectedRoom.moveRight();
+                            if (selectedRoom.Pos.Y + selectedRoom.Layout.Size.Y < background.Size.Y)
+                            {
+                                selectedRoom.moveRight();
+                            }
                             b = false;
                             break;
                         }
@@ -53,6 +60,24 @@ namespace JA_19
                         }
                 }
             }
+        }
+
+        public static int SelectRoomIndex(int roomAmount)
+        {
+            Console.WriteLine("Quelle pièce souhaitez-vous sélectionner ?");
+
+            bool b = true;
+            int answer;
+
+            while (b)
+            {
+                answer = Convert.ToInt32(Console.ReadLine());
+                if (0 <= answer && answer < roomAmount)
+                {
+                    return answer;
+                }
+            }
+            throw new InvalidOperationException();
         }
     }
 }
