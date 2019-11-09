@@ -42,7 +42,8 @@ namespace JA_19
             for(int i = 0; i < doorAmount; i++)
             {
                 //TODO : set the coordinates
-                DoorCoordinatesList.Add(new Vector2(0, 0));
+                RandomDoorCoordinates randomCoordinates = new RandomDoorCoordinates(sizeX, sizeY);
+                DoorCoordinatesList.Add(new Vector2(randomCoordinates.randomX, randomCoordinates.randomY));
             }
 
             char[,] cArray = new char[Size.x, Size.y];
