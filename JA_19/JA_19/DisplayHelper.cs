@@ -38,9 +38,9 @@ namespace JA_19
         {
             if(IsColliding(bg, room))
             {
-                MergeLayouts(bg, new Layout(room.RoomLayout.Size), room.Pos, room.RoomLayout.Size);
+                MergeLayouts(bg, new Layout(room.Layout.Size), room.Pos, room.Layout.Size);
             }
-            return MergeLayouts(bg, room.RoomLayout, room.Pos, room.RoomLayout.Size);
+            return MergeLayouts(bg, room.Layout, room.Pos, room.Layout.Size);
         }
 
         private static Layout MergeLayouts(Layout bg, Layout room, Vector2 pos, Vector2 size)
@@ -63,11 +63,11 @@ namespace JA_19
 
         public static bool IsColliding(Layout bg, Room room)
         {
-            for (int i = 0; i < room.RoomLayout.Size.X; i++)
+            for (int i = 0; i < room.Layout.Size.X; i++)
             {
-                for (int j = 0; j < room.RoomLayout.Size.Y; j++)
+                for (int j = 0; j < room.Layout.Size.Y; j++)
                 {
-                    if (room.RoomLayout.Content[i, j] != 'a')
+                    if (room.Layout.Content[i, j] != 'a')
                     {
                         if (bg.Content[room.Pos.X + i, room.Pos.Y + j] != 'a')
                             return true;

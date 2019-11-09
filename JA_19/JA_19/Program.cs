@@ -12,7 +12,9 @@ namespace JA_19
         static void Main(string[] args)
         {
             Layout background = Layout.EmptyLayout(new Vector2(32, 32));
-            Room room = new Room(3, new Vector2(0, 0), 3, 8);
+            Room room = new Room(3, new Vector2(0, 0), new Vector2(3, 8));
+
+            DisplayHelper.DisplayGameState(background, room);
         }
     }
 }

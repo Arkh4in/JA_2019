@@ -9,7 +9,7 @@ namespace JA_19
     public class Room
     {
         //Prop & Constructors//
-        public Layout RoomLayout { get; set; }
+        public Layout Layout { get; set; }
 
         public int Area { get; set; }
 
@@ -17,14 +17,25 @@ namespace JA_19
 
         public Vector2 Pos { get; set; }
 
-        public Room(int doorAmount, Vector2 coordinates, int sizeX, int sizeY)
+        public Room(int doorAmount, Vector2 coordinates, Vector2 size)
         {
             DoorAmount = doorAmount;
             Pos = coordinates;
-            RoomLayout = new Layout(new Vector2(5, 5));
 
-            Area = sizeX * sizeY;
+            Area = size.X * size.Y;
+            Layout = Layout.EmptyLayout(size);
+            for(int i = 0; i < size.X; i++)
+            {
+                Layout.Content[i, 0] = Settings.WallKey;
+                Layout.Content[i, size.Y-1] = Settings.WallKey;
+            }
+            for (int i = 0; i < size.Y; i++)
+            {
+                Layout.Content[0, i] = Settings.WallKey;
+                Layout.Content[size.X-1, i] = Settings.WallKey;
+            }
+
+            //TODO add door
         }
-
     }
 }
