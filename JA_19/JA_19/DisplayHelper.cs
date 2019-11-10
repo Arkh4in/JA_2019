@@ -263,7 +263,7 @@ namespace JA_19
         {
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.BackgroundColor = ConsoleColor.Black;          
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine("                                                                   ");
             Console.WriteLine("  ___  ___   _    ___  ___  ___  _   _  _                          ");
             Console.WriteLine(" / __|| _ \\ /_\\  / __|| __|| __|| | | || |                         ");
@@ -273,56 +273,48 @@ namespace JA_19
             Console.WriteLine("                                                      ___ ___        ");
             Console.WriteLine("                                                     | __|| _ \\    ");
             Console.WriteLine("                                             _  _  _ | _| |   /    ");
-            Console.WriteLine("                                            (_)(_)(_)|___||_|_\\    ");   
-
+            Console.WriteLine("                                            (_)(_)(_)|___||_|_\\    ");
+            Console.WriteLine("                                                                 ");
+            Console.WriteLine("                                                                 ");
+            Console.WriteLine("                                                                 ");
             Console.WriteLine("                                                                   ");
-            Console.WriteLine("                                                                   ");
-            Console.WriteLine("                                                                   ");
-            Console.WriteLine("     _ __    _  _                 ___                               ");
-            Console.WriteLine("    / |\\ \\  | \\| | ___ __ __ __  / __| __ _  _ __   ___          ");
-            Console.WriteLine("    | | | | | .` |/ -_)\\ V  V / | (_ |/ _` || '  \\ / -_)         ");
-            Console.WriteLine("    |_| | | |_|\\_|\\___| \\_/\\_/   \\___|\\__,_||_|_|_|\\___|         ");
+            Console.WriteLine("                                                                 ");
+            Console.WriteLine("                                                                 ");
+            Console.WriteLine("                                                                 ");
+            Console.WriteLine("     _ __     _  _                 ___                               ");
+            Console.WriteLine("    / |\\ \\   | \\| | ___ __ __ __  / __| __ _  _ __   ___          ");
+            Console.WriteLine("    | | | |  | .` |/ -_)\\ V  V / | (_ |/ _` || '  \\ / -_)         ");
+            Console.WriteLine("    |_| | |  |_|\\_|\\___| \\_/\\_/   \\___|\\__,_||_|_|_|\\___|         ");
             Console.WriteLine("       /_/                                                       ");
             Console.WriteLine("                                                                 ");
             Console.WriteLine("     ___ __     ___               _  _  _                        ");
             Console.WriteLine("    |_  )\\ \\   / __| _ _  ___  __| |(_)| |_  ___                 ");
             Console.WriteLine("     / /  | | | (__ | '_|/ -_)/ _` || ||  _|(_-<                 ");
             Console.WriteLine("    /___| | |  \\___||_|  \\___|\\__,_||_| \\__|/__/                 ");
-            Console.WriteLine("         /_/                                                     ");
+            Console.WriteLine("         /_/                                                       ");
             Console.WriteLine("                                                                 ");
-            Console.WriteLine("     ______    ___       _  _                                    ");
-            Console.WriteLine("    |__ /\\ \\  | __|__ __(_)| |_                                  ");
-            Console.WriteLine("     |_ \\ | | | _| \\ \\ /| ||  _|                                 ");
-            Console.WriteLine("    |___/ | | |___|/_\\_\\|_| \\__|                                 ");
-            Console.WriteLine("         /_/                                                      ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
+            Console.WriteLine("     ___  __    ___           _     ___                           ");
+            Console.WriteLine("    |_ _/ \\ \\  | _ ) ___  ___| |_  / __| __  ___  _ _  ___     ");
+            Console.WriteLine("     |_ \\ | |  | _ \\/ -_)(_-<|  _| \\__ \\/ _|/ _ \\| '_|/ -_)   ");
+            Console.WriteLine("    |___/ | |  |___/\\___|/__/ \\__| |___/\\__|\\___/|_|  \\___|   ");
+            Console.WriteLine("         /_/                                                        ");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("     _ _ __     ___       _  _                                    ");
+            Console.WriteLine("    | | |\\ \\   | __|__ __(_)| |_                               ");
+            Console.WriteLine("    |_  _|| |  | _| \\ \\ /| ||  _|                              ");
+            Console.WriteLine("      |_| | |  |___|/_\\_\\|_| \\__|                              ");
+            Console.WriteLine("         /_/                                                  ");
+            Console.WriteLine("                                                               ");
+            Console.WriteLine("                                                               ");
             Console.WriteLine("                                                                 ");
             Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
+            Console.WriteLine("                                                                   ");
+            Console.WriteLine("                                                                   ");
             Console.WriteLine("                                                                 ");
             Console.WriteLine("                                                                 ");
             Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-            Console.WriteLine("                                                                 ");
-
         }
+
 
         public static void DisplayCredit()
         {
