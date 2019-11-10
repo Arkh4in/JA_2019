@@ -16,7 +16,7 @@ namespace JA_19
             {
                 graphicLayout = GraphicMerge(background, room);
             }
-            DisplayLayout(graphicLayout, new Vector2(0,0));
+            DisplayLayout(graphicLayout, new Vector2(0,3));
         }
 
         private static void DisplayLayout(Layout layout, Vector2 v)
@@ -136,7 +136,7 @@ namespace JA_19
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("  1:                    2:                   3:                 ");
-                Console.WriteLine("                                                            ");
+                Console.WriteLine("                                                                ");
                 Layout l = new Layout(new Vector2(10, 32));
                 for(int i = 0; i < roomList.Count; i++)
                 {
@@ -168,7 +168,8 @@ namespace JA_19
             else if( commandType == CommandType.Select)
             {
                 Console.WriteLine($"Select room using number from 1 to {Settings.RoomSelectionAmount}");
-                Console.WriteLine("                                                            ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("N        : NO MORE SPACE                                    ");
             }
         }
 
