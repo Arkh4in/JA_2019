@@ -35,6 +35,22 @@ namespace JA_19
             Console.WriteLine($"  {score.GetScore()}         ");
         }
 
+        public static void DisplayBestScore()
+        {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("  _                 _                                   ");
+            Console.WriteLine(" | |__   ___   ___ | |_     ___  __   ___   _ _   ___   ");
+            Console.WriteLine(" | '_ \\ / -_) (_-< |  _|   (_-< / _| / _ \\ | '_| / -_)  ");
+            Console.Write(" |_.__/ \\___| /__/  \\__|   /__/ \\__| \\___/ |_|   \\___|  ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"  {Score.GetBestScore()}");
+            Console.ReadKey();
+        }
+
         private static void DisplayLayout(Layout layout, Vector2 v)
         {
             Console.SetCursorPosition(v.X, v.Y);

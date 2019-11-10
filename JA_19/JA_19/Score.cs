@@ -94,7 +94,7 @@ namespace JA_19
             return (int)(CurrentScore * (1 + f));
         }
 
-        public int GetBestScore()
+        public static int GetBestScore()
         {
             string path = $"{Directory.GetCurrentDirectory()}\\file.txt";
             var str = File.ReadLines(path).FirstOrDefault();

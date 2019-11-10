@@ -29,7 +29,7 @@ namespace JA_19
         public void MainLoop()
         {
             int i = 0;
-            while (i != 2)
+            while (i != 3)
             {
                 DisplayHelper.DisplayMainMenu();
                 i = Controller.SelectMainMenuIndex();
@@ -42,6 +42,10 @@ namespace JA_19
                 if(i == 1)
                 {
                     DisplayHelper.DisplayCredit();
+                }
+                if(i == 2)
+                {
+                    DisplayHelper.DisplayBestScore();
                 }
             }
         }

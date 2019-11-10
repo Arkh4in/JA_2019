@@ -156,11 +156,14 @@ namespace JA_19
                 if (c == '"')
                     c = '3';
 
+                if (c == '\'')
+                    c = '4';
+
                 int i = 0;
                 if (Int32.TryParse(c.ToString(), out i))
                 {
                     i--;
-                    if (0 <= i && i < 3)
+                    if (0 <= i && i < 4)
                     {
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
                         return i;
