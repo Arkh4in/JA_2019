@@ -34,7 +34,7 @@ namespace JA_19
             vectorList.Add(vec3);
             vectorList.Add(vec4); 
 
-            Vector2 randomVector = vectorList[_Random.Next(0, 3)];
+            Vector2 randomVector = vectorList[_Random.Next(0, 4)];
             return randomVector;
         }
 

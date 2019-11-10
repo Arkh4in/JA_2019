@@ -43,24 +43,73 @@ namespace JA_19
         }
 
         // Moving Methods //
-        public void moveUp()
+        public void MoveUp()
         {
             Pos.X = (Pos.X - 1);
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             Pos.X = (Pos.X + 1);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             Pos.Y = (Pos.Y + 1);
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             Pos.Y = (Pos.Y - 1);
         }
+
+        public void RotateCW()
+        {
+            Layout l = new Layout(new Vector2(Layout.Size.Y, Layout.Size.X));
+
+            BaseRotation(l);
+
+            for (int i = 0; i < l.Size.X; i++)
+            {
+                for(int j = 0; j < l.Size.Y / 2; j++)
+                {
+                    var buffer = l.Content[i, j];
+                    l.Content[i, j] = l.Content[i, l.Size.Y - 1 - j];
+                    l.Content[i, l.Size.Y - 1 - j] = buffer;
+                }
+            }
+
+            Layout = l;
+        }
+        public void RotateACW()
+        {
+            Layout l = new Layout(new Vector2(Layout.Size.Y, Layout.Size.X));
+
+            BaseRotation(l);
+
+            for (int i = 0; i < l.Size.X / 2; i++)
+            {
+                for (int j = 0; j < l.Size.Y ; j++)
+                {
+                    var buffer = l.Content[i, j];
+                    l.Content[i, j] = l.Content[l.Size.X - 1 - i, j];
+                    l.Content[l.Size.X - 1 - i, j] = buffer;
+                }
+            }
+
+            Layout = l;
+        }
+
+        private void BaseRotation(Layout l)
+        {
+            for (int i = 0; i < Layout.Size.X; i++)
+            {
+                for (int j = 0; j < Layout.Size.Y; j++)
+                {
+                    l.Content[j, i] = Layout.Content[i, j];
+                }
+            }
+        }
+
     }
 }

@@ -35,13 +35,10 @@ namespace JA_19
 
         public void MainLoop()
         {
-            while(true)
-            {
-                MainExecution();
-            }
+            while (MainExecution()) { }
         }
 
-        private void MainExecution()
+        private bool MainExecution()
         {
             if (_currentRoom == null)
             {
@@ -50,11 +47,20 @@ namespace JA_19
             else
             {
                 DisplayHelper.DisplayGameState(_background, _currentRoom);
-                if(Controller.Move(_currentRoom, _background))
+                DisplayHelper.DisplayBottom(DisplayHelper.CommandType.Move);
+                MoveResult result;
+                Controller.Move(_currentRoom, _background, out result);
+
+                if(result == MoveResult.Placed)
                 {
                     _currentRoom = null;
                 }
+                else if( result == MoveResult.GaveUp)
+                {
+                    return false;
+                }
             }
+            return true;
         }
 
         //Methods//

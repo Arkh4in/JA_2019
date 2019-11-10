@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace JA_19
 {
+    public enum MoveResult { None, Placed, GaveUp}
+
     public static class Controller
     {
+
         //Methods//
-        public static bool Move(Room selectedRoom, Layout background)
+        public static void Move(Room selectedRoom, Layout background, out MoveResult result)
         {
+            result = MoveResult.None;
             bool b = true;
             while (b)
             { 
@@ -21,7 +25,7 @@ namespace JA_19
                         {
                             if(selectedRoom.Pos.X > 0)
                             {
-                                selectedRoom.moveUp();
+                                selectedRoom.MoveUp();
                             }
                             b = false;
                             break;
@@ -30,7 +34,7 @@ namespace JA_19
                         {
                             if (selectedRoom.Pos.X + selectedRoom.Layout.Size.X < background.Size.X)
                             {
-                                selectedRoom.moveDown();
+                                selectedRoom.MoveDown();
                             }
                             b = false;
                             break;
@@ -39,7 +43,7 @@ namespace JA_19
                         {
                             if (selectedRoom.Pos.Y > 0)
                             {
-                                selectedRoom.moveLeft();
+                                selectedRoom.MoveLeft();
                             }
                             b = false;
                             break;
@@ -48,7 +52,27 @@ namespace JA_19
                         {
                             if (selectedRoom.Pos.Y + selectedRoom.Layout.Size.Y < background.Size.Y)
                             {
-                                selectedRoom.moveRight();
+                                selectedRoom.MoveRight();
+                            }
+                            b = false;
+                            break;
+                        }
+                    case 'a':
+                        {
+                            if (selectedRoom.Pos.Y + selectedRoom.Layout.Size.X < background.Size.Y &&
+                                selectedRoom.Pos.X + selectedRoom.Layout.Size.Y < background.Size.X)
+                            {
+                                selectedRoom.RotateACW();
+                            }
+                            b = false;
+                            break;
+                        }
+                    case 'e':
+                        {
+                            if (selectedRoom.Pos.Y + selectedRoom.Layout.Size.X < background.Size.Y &&
+                                selectedRoom.Pos.X + selectedRoom.Layout.Size.Y < background.Size.X)
+                            {
+                                selectedRoom.RotateCW();
                             }
                             b = false;
                             break;
@@ -58,9 +82,16 @@ namespace JA_19
                             if (LayoutHelper.IsValid(background, selectedRoom))
                             {
                                 LayoutHelper.MergeRoom(background, selectedRoom);
-                                return true;
+                                DisplayHelper.DisplayMoreSpace();
+                                result = MoveResult.Placed;
+                                return;
                             }
                             break;
+                        }
+                    case 'n':
+                        {
+                            result = MoveResult.GaveUp;
+                            return;
                         }
                     default :
                         {
@@ -69,7 +100,7 @@ namespace JA_19
                         }
                 }
             }
-            return false;
+            return;
         }
 
         public static int SelectRoomIndex(int roomAmount)
