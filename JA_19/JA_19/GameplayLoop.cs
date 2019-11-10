@@ -25,13 +25,27 @@ namespace JA_19
 
         public void MainLoop()
         {
-            while (MainExecution()) { }
+            int i = 0;
+            while (i != 2)
+            {
+                DisplayHelper.DisplayMainMenu();
+                i = Controller.SelectMainMenuIndex();
+                if(i == 0)
+                {
+                    while (MainExecution()) { }
+                }
+                if(i == 1)
+                {
+                    DisplayHelper.DisplayCredit();
+                }
+            }
         }
 
         private bool MainExecution()
         {
             if (_currentRoom == null)
             {
+                DisplayHelper.DisplayGameState(_background, _currentRoom);
                 _currentRoom = SelectRoom();
             }
             else
@@ -47,6 +61,7 @@ namespace JA_19
                 }
                 else if( result == MoveResult.GaveUp)
                 {
+                    DisplayHelper.DisplayGameOver();
                     return false;
                 }
             }
@@ -57,15 +72,19 @@ namespace JA_19
 
         public Room SelectRoom()
         {
-            return RoomFactory.CreateRandomRoom();
-            //var roomSelection = RoomSelection(Settings.RoomSelectionAmount);
-            //return roomSelection[Controller.SelectRoomIndex(Settings.RoomSelectionAmount)];
+            var roomSelection = RoomSelection(Settings.RoomSelectionAmount);
+            DisplayHelper.DisplayBottom(DisplayHelper.CommandType.Select, roomSelection);
+            return roomSelection[Controller.SelectRoomIndex(Settings.RoomSelectionAmount)];
         }
 
         private List<Room> RoomSelection(int roomAmount)
         {
-            //TODO : call factory
-            return new List<Room>(roomAmount);
+            var roomList = new List<Room>(roomAmount);
+            for (int i = 0; i < roomAmount; i++)
+            {
+                roomList.Add(RoomFactory.CreateRandomRoom());
+            }
+            return roomList;
         }
     }
 }

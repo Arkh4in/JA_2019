@@ -95,8 +95,7 @@ namespace JA_19
                         }
                     default :
                         {
-                            Console.WriteLine("Vous devez utiliser Z, Q, S et D pour bouger la salle.");
-                            break;
+                            continue;
                         }
                 }
             }
@@ -105,17 +104,41 @@ namespace JA_19
 
         public static int SelectRoomIndex(int roomAmount)
         {
-            Console.WriteLine("Quelle pièce souhaitez-vous sélectionner ?");
-
             bool b = true;
-            int answer;
-
             while (b)
             {
-                answer = Convert.ToInt32(Console.ReadLine());
-                if (0 <= answer && answer < roomAmount)
+                var content = Console.ReadKey();
+                int i = 0;
+                if(Int32.TryParse(content.KeyChar.ToString(), out i))
                 {
-                    return answer;
+                    i--;
+                    if (0 <= i && i < roomAmount)
+                    {
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        return i;
+                    }
+                    Console.SetCursorPosition(0, Console.CursorTop);
+                }
+            }
+            throw new InvalidOperationException();
+        }
+
+        public static int SelectMainMenuIndex()
+        {
+            bool b = true;
+            while (b)
+            {
+                var content = Console.ReadKey();
+                int i = 0;
+                if (Int32.TryParse(content.KeyChar.ToString(), out i))
+                {
+                    i--;
+                    if (0 <= i && i < 3)
+                    {
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        return i;
+                    }
+                    Console.SetCursorPosition(0, Console.CursorTop);
                 }
             }
             throw new InvalidOperationException();
