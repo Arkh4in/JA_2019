@@ -14,6 +14,9 @@ namespace JA_19
             Console.SetWindowSize(Settings.BackgroundSize.Y * 2 + 1, Settings.BackgroundSize.X + 15);
             GameplayLoop gl = new GameplayLoop();
             gl.MainLoop();
+
+            Score spaciosity = new Score();
+            spaciosity.IncreaseScore(12);
         }
     }
 }
