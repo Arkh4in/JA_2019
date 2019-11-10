@@ -90,7 +90,7 @@ namespace JA_19
             return (RoomType)valuesTypesArray.GetValue(index);
         }
 
-        public static Room CreateRandomRoom()//no coordinates redundance gestion : if 2 doors position match, one door less, who cares?
+        public static Room CreateRandomRoom()
         {
             RoomType r = RandomizeType();
             var settings = FromRoomTypeToRoomSettings[r];
