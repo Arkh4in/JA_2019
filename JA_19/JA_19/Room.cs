@@ -21,7 +21,7 @@ namespace JA_19
         {
             Pos = coordinates;
 
-            Area = size.X * size.Y;
+            Area = (size.X-2) * (size.Y-2);
             Layout = new Layout(size, typeKey);
             for(int i = 0; i < size.X; i++)
             {
