@@ -8,15 +8,27 @@ namespace JA_19
 {
     public enum RoomType { Bathroom, Bedroom, Livingroom, Kitchen, Garden, Corridor, Toilets, Officeroom }
 
-    class RoomSettings
+    public class RoomSettings
     {
-        public static int MinSizeX;
-        public static int MinSizeY;
-        public static int MaxSizeX ;
-        public static int MaxSizeY;
-        public static int MinDoorsAmount;
-        public static int MaxDoorsAmount;
+        //create one and only RoomSettings at the gameInitialization?                 
+
+        public int MinSizeX;
+        public int MinSizeY;
+        public int MaxSizeX;
+        public int MaxSizeY;
+        public int MinDoorsAmount;
+        public int MaxDoorsAmount;
+        public int SizeXBackground = 32;
+        public int SizeYBackground = 32;
+
+
+
         public static Dictionary<RoomType, RoomSettings> FromRoomTypeToRoomSettings { get; private set; }
+
+        public RoomSettings(RoomType r)
+        {
+            Init(r);
+        }
 
         public RoomSettings(int minSizeX, int minSizeY, int maxSizeX, int maxSizeY, int minDoorsAmount, int maxDoorsAmount)
         {
@@ -27,30 +39,65 @@ namespace JA_19
             MinDoorsAmount = minDoorsAmount;
             MaxDoorsAmount = maxDoorsAmount;
         }
-        public void Init()
-        { 
-            RoomSettings BedroomSettings = new RoomSettings(2, 2, 3, 3, 1, 2);
-            RoomSettings BathroomSettings = new RoomSettings(2, 2, 3, 3, 1, 2);
-            RoomSettings LivingroomSettings = new RoomSettings(4, 4, 7, 8, 1, 3);
-            RoomSettings KitchenSettings = new RoomSettings(3, 3, 4, 4, 1, 2);
-            RoomSettings GardenSettings = new RoomSettings(5, 5, 8, 8, 2, 3);
-            RoomSettings CorridorSettings = new RoomSettings(1, 4, 2, 8, 2, 4);
-            RoomSettings ToiletsSettings = new RoomSettings(1, 1, 2, 2, 1, 1);
-            RoomSettings OfficeroomSettings = new RoomSettings(2, 2, 3, 3, 1, 2);
 
-            Dictionary<RoomType, RoomSettings> fromRoomTypeToRoomSettings = new Dictionary<RoomType, RoomSettings>()
+        public void Init(RoomType r)
+        {
+
+            Dictionary<RoomType, RoomSettings> fromRoomTypeToRoomSettings = new Dictionary<RoomType, RoomSettings>();
+
+            switch (r)
             {
-                {RoomType.Bathroom, BathroomSettings},
-                {RoomType.Bedroom, BedroomSettings},
-                {RoomType.Livingroom, LivingroomSettings},
-                {RoomType.Kitchen, KitchenSettings},
-                {RoomType.Garden, GardenSettings},
-                {RoomType.Corridor, CorridorSettings},
-                {RoomType.Toilets, ToiletsSettings},
-                {RoomType.Officeroom, OfficeroomSettings},
-            };
-
-            FromRoomTypeToRoomSettings = fromRoomTypeToRoomSettings;
+                case RoomType.Bathroom:
+                    {
+                        var BathroomSettings = new RoomSettings(2, 2, 3, 3, 1, 2);
+                        FromRoomTypeToRoomSettings[RoomType.Bathroom] = BathroomSettings;
+                        break;
+                    }
+                case RoomType.Bedroom:
+                    {
+                        var BedroomSettings = new RoomSettings(2, 2, 3, 3, 1, 2);
+                        FromRoomTypeToRoomSettings[RoomType.Bedroom] = BedroomSettings;
+                        break;
+                    }
+                case RoomType.Livingroom:
+                    {
+                        var LivingroomSettings = new RoomSettings(4, 4, 7, 8, 1, 3);
+                        FromRoomTypeToRoomSettings[RoomType.Livingroom] = LivingroomSettings;
+                        break;
+                    }
+                case RoomType.Kitchen:
+                    {
+                        var KitchenSettings = new RoomSettings(3, 3, 4, 4, 1, 2);
+                        FromRoomTypeToRoomSettings[RoomType.Kitchen] = KitchenSettings;
+                        break;
+                    }
+                case RoomType.Garden:
+                    {
+                        var GardenSettings = new RoomSettings(5, 5, 8, 8, 2, 3);
+                        FromRoomTypeToRoomSettings[RoomType.Garden] = GardenSettings;
+                        break;
+                    }
+                case RoomType.Corridor:
+                    {
+                        var CorridorSettings = new RoomSettings(1, 4, 2, 8, 2, 4);
+                        FromRoomTypeToRoomSettings[RoomType.Corridor] = CorridorSettings;
+                        break;
+                    }
+                case RoomType.Toilets:
+                    {
+                        var ToiletsSettings = new RoomSettings(1, 1, 2, 2, 1, 1);
+                        FromRoomTypeToRoomSettings[RoomType.Toilets] = ToiletsSettings;
+                        break;
+                    }
+                case RoomType.Officeroom:
+                    {
+                        var OfficeroomSettings = new RoomSettings(2, 2, 3, 3, 1, 2);
+                        FromRoomTypeToRoomSettings[RoomType.Officeroom] = OfficeroomSettings;
+                        break;
+                    }
+                default:
+                    throw (new NotImplementedException());
+            }
         }
     }
 }
