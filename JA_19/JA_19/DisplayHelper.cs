@@ -174,21 +174,22 @@ namespace JA_19
 
         public static void DisplayGameOver()
         {
+            Console.Clear();
             Random r = new Random();
-            string str = "NO MORE SPACE ! ";
+            string str = "NO MORE SPACE!  ";
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Red;
 
-            for (int j = 0; j < Settings.BackgroundSize.Y * 1.5 +2; j++)
+            for (int j = 0; j < Settings.BackgroundSize.Y * 1.5; j++)
             {
                 int offset = r.Next() % 10;
                 for(int i = 0; i < Settings.BackgroundSize.X; i++)
                 {
-                    Console.SetCursorPosition(i*2, j);
                     Console.Write($"{str[(i+j+offset) % 16]} ");
-                    Thread.Sleep(2);
+                    Thread.Sleep((i + j % 6) <= 4 ? 1 : 0);
                 }
+                Console.Write("\n");
             }
 
             Console.SetCursorPosition(0, Settings.BackgroundSize.X / 2 - 5);
