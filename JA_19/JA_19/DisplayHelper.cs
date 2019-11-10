@@ -46,11 +46,11 @@ namespace JA_19
         {
             if(LayoutHelper.IsColliding(bg, room))
             {
-                return LayoutHelper.MergeLayouts(bg, Layout.AsInvalid(room.Layout, Settings.WallKey), room.Pos, room.Layout.Size);
+                return LayoutHelper.MergeLayouts(bg, Layout.AsInvalid(room.Layout, InvalidType.Pos), room.Pos, room.Layout.Size);
             }
             else if(!LayoutHelper.IsDoorValid(bg, room))
             {
-                return LayoutHelper.MergeLayouts(bg, Layout.AsInvalid(room.Layout, Settings.DoorKey), room.Pos, room.Layout.Size);
+                return LayoutHelper.MergeLayouts(bg, Layout.AsInvalid(room.Layout, InvalidType.Door), room.Pos, room.Layout.Size);
             }
             return LayoutHelper.MergeLayouts(bg, room.Layout, room.Pos, room.Layout.Size);
         }

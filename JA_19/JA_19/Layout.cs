@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace JA_19
 {
+    public enum InvalidType { Pos, Door}
+
     public class Layout
     {
         private bool _isDoorcoordinatesCached = false;
@@ -66,17 +68,30 @@ namespace JA_19
                 }
             }
         }
-
-        public static Layout AsInvalid(Layout l, char invalidKey)
+        
+        public static Layout AsInvalid(Layout l, InvalidType type)
         {
             Layout copy = new Layout(l);
             for (int i = 0; i < l.Size.X; i++)
             {
                 for (int j = 0; j < l.Size.Y; j++)
                 {
-                    if(l.Content[i, j] == invalidKey)
+                    var content = l.Content[i, j];
+                    if (type == InvalidType.Door)
                     {
-                        copy.Content[i, j] = Settings.InvalidKey;
+                        if(content == Settings.DoorKey)
+                        {
+                            copy.Content[i, j] = Settings.InvalidKey;
+                        }
+                    }
+                    else if(type == InvalidType.Pos)
+                    {
+                        if (content != Settings.DoorKey
+                            && content != Settings.EmptyKey
+                            && content != Settings.WallKey)
+                        {
+                            copy.Content[i, j] = Settings.InvalidKey;
+                        }
                     }
                 }
             }
