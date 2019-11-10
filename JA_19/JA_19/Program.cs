@@ -15,8 +15,8 @@ namespace JA_19
             GameplayLoop gl = new GameplayLoop();
             gl.MainLoop();
 
-            Score spaciosity = new Score();
-            spaciosity.IncreaseScore(12);
+            //Score spaciosity = new Score();
+            //spaciosity.IncreaseScore(12);
         }
     }
 }

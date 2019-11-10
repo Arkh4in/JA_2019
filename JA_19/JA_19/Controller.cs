@@ -122,5 +122,26 @@ namespace JA_19
             }
             throw new InvalidOperationException();
         }
+
+        public static int SelectMainMenuIndex()
+        {
+            bool b = true;
+            while (b)
+            {
+                var content = Console.ReadKey();
+                int i = 0;
+                if (Int32.TryParse(content.KeyChar.ToString(), out i))
+                {
+                    i--;
+                    if (0 <= i && i < 3)
+                    {
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        return i;
+                    }
+                    Console.SetCursorPosition(0, Console.CursorTop);
+                }
+            }
+            throw new InvalidOperationException();
+        }
     }
 }

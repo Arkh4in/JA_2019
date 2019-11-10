@@ -170,5 +170,122 @@ namespace JA_19
                 Console.WriteLine("                                                            ");
             }
         }
+
+        public static void DisplayMainMenu()
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.Black;          
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("  ___  ___   _    ___  ___  ___  _   _  _     _                 ");
+            Console.WriteLine(" / __|| _ \\ /_\\  / __|| __|| __|| | | || |   | |                ");
+            Console.WriteLine(" \\__ \\|  _// _ \\| (__ | _| | _| | |_| || |__ | |__  _  _  _     ");
+            Console.WriteLine(" |___/|_| /_/ \\_\\\\___||___||_|   \\___/ |____||____|(_)(_)(_)    ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                      ___ ___        ");
+            Console.WriteLine("                                                     | __|| _ \\ ");
+            Console.WriteLine("                                             _  _  _ | _| |   / ");
+            Console.WriteLine("                                            (_)(_)(_)|___||_|_\\ ");   
+
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("     _ __    _  _                 ___                           ");
+            Console.WriteLine("    / |\\ \\  | \\| | ___ __ __ __  / __| __ _  _ __   ___         ");
+            Console.WriteLine("    | | | | | .` |/ -_)\\ V  V / | (_ |/ _` || '  \\ / -_)        ");
+            Console.WriteLine("    |_| | | |_|\\_|\\___| \\_/\\_/   \\___|\\__,_||_|_|_|\\___|        ");
+            Console.WriteLine("       /_/                                                      ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("     ___ __     ___               _  _  _                       ");
+            Console.WriteLine("    |_  )\\ \\   / __| _ _  ___  __| |(_)| |_  ___                ");
+            Console.WriteLine("     / /  | | | (__ | '_|/ -_)/ _` || ||  _|(_-<                ");
+            Console.WriteLine("    /___| | |  \\___||_|  \\___|\\__,_||_| \\__|/__/                ");
+            Console.WriteLine("         /_/                                                    ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("     ______    ___       _  _                                   ");
+            Console.WriteLine("    |__ /\\ \\  | __|__ __(_)| |_                                 ");
+            Console.WriteLine("     |_ \\ | | | _| \\ \\ /| ||  _|                                ");
+            Console.WriteLine("    |___/ | | |___|/_\\_\\|_| \\__|                                ");
+            Console.WriteLine("         /_/                                                    ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+
+        }
+
+        public static void DisplayCredit()
+        {
+            Console.SetCursorPosition(0, 0);
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                     SPACE                                      ");
+            Console.WriteLine("                                                      SPACE     ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("            SPACE                                               ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                   Prog : Melissa Sadouki       ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                              SPACE                             ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("               SPACE                                            ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                    SPACE                                       ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                        MORE          SPACE     ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                    SPACE                                       ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("     Prog : Thomas Falcone                                      ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                 SPACE                          ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                       SPACE                    ");
+            Console.WriteLine("                               MORE SPACE                       ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("         SPACE                                                  ");
+            Console.WriteLine("                                                        SPACE   ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine("        SPACE                                                   ");
+            Console.WriteLine("                                 SPACE                          ");
+            Console.WriteLine("                                                                ");
+            Console.ReadKey();
+        }
     }
 }

@@ -25,7 +25,20 @@ namespace JA_19
 
         public void MainLoop()
         {
-            while (MainExecution()) { }
+            int i = 0;
+            while (i != 2)
+            {
+                DisplayHelper.DisplayMainMenu();
+                i = Controller.SelectMainMenuIndex();
+                if(i == 0)
+                {
+                    while (MainExecution()) { }
+                }
+                if(i == 1)
+                {
+                    DisplayHelper.DisplayCredit();
+                }
+            }
         }
 
         private bool MainExecution()
