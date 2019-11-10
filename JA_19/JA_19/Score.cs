@@ -92,23 +92,27 @@ namespace JA_19
             return (int)(CurrentScore * (1 + f));
         }
 
+        static string _Path = $"{Directory.GetCurrentDirectory()}\\BestScore.svg";
+
         public static int GetBestScore()
         {
-            string path = $"{Directory.GetCurrentDirectory()}\\file.txt";
-            var str = File.ReadLines(path).FirstOrDefault();
             int i = 0;
-            Int32.TryParse(str, out i);
+            if(File.Exists(_Path))
+            {
+                var str = File.ReadLines(_Path).FirstOrDefault();
+                Int32.TryParse(str, out i);
+            }
             return i;
         }
 
         private void SetBestScore(int i)
         {
-            string path = $"{Directory.GetCurrentDirectory()}\\file.txt";
-            if (!File.Exists(path))
+            if (!File.Exists(_Path))
             {
-                File.Create(path);
+                var fs = File.Create(_Path);
+                fs.Close();
             }
-            File.WriteAllText(path, i.ToString());
+            File.WriteAllText(_Path, i.ToString());
         }
 
         public void UpdateScore(Room room)
