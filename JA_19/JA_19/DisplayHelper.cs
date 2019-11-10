@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JA_19
@@ -169,6 +170,43 @@ namespace JA_19
                 Console.WriteLine($"Select room using number from 1 to {Settings.RoomSelectionAmount}");
                 Console.WriteLine("                                                            ");
             }
+        }
+
+        public static void DisplayGameOver()
+        {
+            Random r = new Random();
+            string str = "NO MORE SPACE ! ";
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            for (int j = 0; j < Settings.BackgroundSize.Y * 1.5 +2; j++)
+            {
+                int offset = r.Next() % 10;
+                for(int i = 0; i < Settings.BackgroundSize.X; i++)
+                {
+                    Console.SetCursorPosition(i*2, j);
+                    Console.Write($"{str[(i+j+offset) % 16]} ");
+                    Thread.Sleep(2);
+                }
+            }
+
+            Console.SetCursorPosition(0, Settings.BackgroundSize.X / 2 - 5);
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("                                                                ");
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.WriteLine("                                                                   ");
+            Console.WriteLine(" _  _   ___    __  __   ___   ___  ___   ___  ___   _    ___  ___    ");
+            Console.WriteLine("| \\| | / _ \\  |  \\/  | / _ \\ | _ \\| __| / __|| _ \\ /_\\  / __|| __|");
+            Console.WriteLine("| .` || (_) | | |\\/| || (_) ||   /| _|  \\__ \\|  _// _ \\| (__ | _|  ");
+            Console.WriteLine("|_|\\_| \\___/  |_|  |_| \\___/ |_|_\\|___| |___/|_| /_/ \\_\\\\___||___|");
+            Console.WriteLine("                                                                  ");
+            Console.WriteLine("                                                                  ");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("                                                                  ");
+            Console.ReadKey();
         }
 
         public static void DisplayMainMenu()

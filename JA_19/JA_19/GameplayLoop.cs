@@ -61,6 +61,7 @@ namespace JA_19
                 }
                 else if( result == MoveResult.GaveUp)
                 {
+                    DisplayHelper.DisplayGameOver();
                     return false;
                 }
             }
