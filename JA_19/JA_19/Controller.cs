@@ -108,8 +108,18 @@ namespace JA_19
             while (b)
             {
                 var content = Console.ReadKey();
+                var c = content.KeyChar;
+                if (c == '&')
+                    c = '1';
+
+                if (c == 'é')
+                    c = '1';
+
+                if (c == '&')
+                    c = '"';
+
                 int i = 0;
-                if(Int32.TryParse(content.KeyChar.ToString(), out i))
+                if(Int32.TryParse(c.ToString(), out i))
                 {
                     i--;
                     if (0 <= i && i < roomAmount)
@@ -129,8 +139,18 @@ namespace JA_19
             while (b)
             {
                 var content = Console.ReadKey();
+                var c = content.KeyChar;
+                if (c == '&')
+                    c = '1';
+
+                if (c == 'é')
+                    c = '1';
+
+                if (c == '&')
+                    c = '"';
+
                 int i = 0;
-                if (Int32.TryParse(content.KeyChar.ToString(), out i))
+                if (Int32.TryParse(c.ToString(), out i))
                 {
                     i--;
                     if (0 <= i && i < 3)
