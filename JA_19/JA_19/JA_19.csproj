@@ -48,7 +48,6 @@
     <Compile Include="GameplayLoop.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="LayoutHelper.cs" />
-    <Compile Include="RandomDoorCoordinates.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="RoomFactory.cs" />

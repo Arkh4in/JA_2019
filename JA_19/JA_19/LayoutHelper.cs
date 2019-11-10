@@ -27,7 +27,7 @@ namespace JA_19
                 for (int j = 0; j < size.Y; j++)
                 {
                     buffer = room.Content[i, j];
-                    if (buffer != 'a')
+                    if (buffer != Settings.EmptyKey)
                     {
                         l.Content[pos.X + i, pos.Y + j] = buffer;
                     }
@@ -42,9 +42,12 @@ namespace JA_19
             {
                 for (int j = 0; j < room.Layout.Size.Y; j++)
                 {
-                    if (room.Layout.Content[i, j] != 'a')
+                    var content = room.Layout.Content[i, j];
+                    if (content != Settings.EmptyKey &&
+                        content != Settings.DoorKey &&
+                        content != Settings.WallKey)
                     {
-                        if (bg.Content[room.Pos.X + i, room.Pos.Y + j] != 'a')
+                        if (bg.Content[room.Pos.X + i, room.Pos.Y + j] != Settings.EmptyKey)
                             return true;
                     }
                 }
@@ -52,31 +55,13 @@ namespace JA_19
             return false;
         }
 
-        //Cryptic
         public static bool IsDoorValid(Layout bg, Room room)
         {
             var doorsPos = room.Layout.DoorCoordinatesList;
             foreach (var p in doorsPos)
             {
-                int minX = Math.Max(0, p.X + -1 + room.Pos.X);
-                int minY = Math.Max(0, p.Y + -1 + room.Pos.Y);
-
-                int maxX = Math.Min(bg.Size.X - 1, p.X + 1 + room.Pos.X);
-                int maxY = Math.Min(bg.Size.Y - 1, p.Y + 1 + room.Pos.Y);
-
-                for (int i = minX; i <= maxX; i++)
-                {
-                    for (int j = minY; j <= maxY; j++)
-                    {
-                        if (bg.Content[i, j] == Settings.DoorKey)
-                        {
-                            if (i == p.X + room.Pos.X || j == p.Y + room.Pos.Y)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
+                if (bg.Content[p.X + room.Pos.X, p.Y + room.Pos.Y] == Settings.DoorKey)
+                    return true;
             }
             return false;
         }
