@@ -214,29 +214,30 @@ namespace JA_19
         {
             Console.Clear();
             Console.WriteLine("                                                                ");
-            Console.WriteLine("Welcome in Spaceful...er.                                       ");
+            Console.WriteLine("                Welcome in Spaceful...er.                       ");
             Console.WriteLine("                                                                ");
             Console.WriteLine("                                                                ");
-            Console.WriteLine("We need space. More space.                                      ");
-            Console.WriteLine("This means building rooms, more rooms.                          ");
+            Console.WriteLine("               We need space.  More space.                      ");
+            Console.WriteLine("          This means building rooms, more rooms.                ");
             Console.WriteLine("                                                                ");
             Console.WriteLine("                                                                ");
-            Console.WriteLine("Chose between the rooms offered with 1, 2 or 3.                 ");
-            Console.WriteLine("Move it with Z, Q, S and D.                                     ");
-            Console.WriteLine("Rotate a room with A and E to connect doors.                    ");
-            Console.WriteLine("Place it on the board with spacebar.                            ");
+            Console.WriteLine("       Chose between the offered rooms with 1, 2 or 3.          ");
+            Console.WriteLine("               Move it with Z, Q, S and D.                      ");
+            Console.WriteLine("        Rotate a room with A and E to connect doors.            ");
+            Console.WriteLine("            Place it on the board with spacebar.                ");
             Console.WriteLine("                                                                ");
-            Console.WriteLine("If you can't place any more room, press N.                      ");
+            Console.WriteLine("         If you can't place any more room, press N.             ");
             Console.WriteLine("                                                                ");
-            Console.WriteLine("The more rooms you have, the more spaceful it is.               ");
-            Console.WriteLine("The more different types of rooms you have,                     ");
-            Console.WriteLine("the better the Spacefulness is.                                 ");
+            Console.WriteLine("      The more rooms you have, the more spaceful it is.         ");
+            Console.WriteLine("         The more different types of rooms you have,            ");
+            Console.WriteLine("              The better the Spacefulness is.                   ");
             Console.WriteLine("                                                                ");
             Console.WriteLine("                                                                ");
-            Console.WriteLine("Remember.                                                       ");
-            Console.WriteLine("Spacefulness is Hapiness.                                       ");
-            Console.WriteLine("Spacefulness is Endless :                                       ");
-            Console.WriteLine("You..  .always..   .need.   . .more.. .space.                   ");
+            Console.WriteLine("                         Remember.                              ");
+            Console.WriteLine("                Spacefulness is Hapiness.                       ");
+            Console.WriteLine("                Spacefulness is Endless :                       ");
+            Console.WriteLine("                                                                ");
+            Console.WriteLine(" You . .    . always. .    . need .    . .  more ..    . space. ");
 
             Console.ReadKey();
         }
