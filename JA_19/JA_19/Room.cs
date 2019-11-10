@@ -17,12 +17,12 @@ namespace JA_19
 
         public Vector2 Pos { get; set; }
 
-        public Room(Vector2 coordinates, Vector2 size)
+        public Room(Vector2 coordinates, Vector2 size, char typeKey)
         {
             Pos = coordinates;
 
             Area = size.X * size.Y;
-            Layout = new Layout(size, Settings.BedRoomKey);
+            Layout = new Layout(size, typeKey);
             for(int i = 0; i < size.X; i++)
             {
                 Layout.Content[i, 0] = Settings.WallKey;

@@ -12,16 +12,10 @@ namespace JA_19
         public static char DoorKey = (char)(ConsoleColor.White + 97);
         public static char WallKey = (char)(ConsoleColor.DarkGray + 97);
         public static char InvalidKey = (char)(ConsoleColor.Red + 97);
+
         public static char BedRoomKey = (char)(ConsoleColor.Cyan + 97);
-
-        public static int minSizeX = 3;
-        public static int minSizeY = 3;
-        public static int maxSizeX = 12;
-        public static int maxSizeY = 12;
-
-        public static int minDoorsAmount = 1;
-        public static int maxDoorsAmount = 3;
-
+        public static char TestRoomKey = (char)(ConsoleColor.Yellow + 97);
+        
         public static Vector2 BackgroundSize = new Vector2(32, 32);
         public static int RoomSelectionAmount = 3;
     }
