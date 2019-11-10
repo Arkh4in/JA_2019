@@ -14,23 +14,13 @@ namespace JA_19
         public GameplayLoop()
         {
             _background = new Layout(Settings.BackgroundSize);
+            Room initRoom = RoomFactory.CreateInitRoom();
 
-            _background.Content[5, 5] = Settings.DoorKey;
-            _background.Content[10, 10] = Settings.DoorKey;
-            _background.Content[20, 20] = Settings.DoorKey;
-
-            _background.Content[0, 5] = Settings.DoorKey;
-            _background.Content[0, 10] = Settings.DoorKey;
-            _background.Content[0, 20] = Settings.DoorKey;
-
-            _background.Content[5,  0] = Settings.DoorKey;
-            _background.Content[10, 0] = Settings.DoorKey;
-            _background.Content[20, 0] = Settings.DoorKey;
-
-            _background.Content[5,  31] = Settings.DoorKey;
-            _background.Content[10, 31] = Settings.DoorKey;
-            _background.Content[20, 31] = Settings.DoorKey;
-
+            _background.Content = LayoutHelper.MergeLayouts(
+                _background, 
+                initRoom.Layout, 
+                new Vector2(Settings.BackgroundSize.X / 2, Settings.BackgroundSize.Y / 2 - 1), 
+                initRoom.Layout.Size).Content;
         }
 
         public void MainLoop()

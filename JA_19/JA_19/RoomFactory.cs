@@ -105,5 +105,18 @@ namespace JA_19
             }
             return room;
         }
+
+        public static Room CreateInitRoom()
+        {
+            Room room = new Room(
+                new Vector2(0, 0),
+                new Vector2(8, 3),
+                Settings.BaseRoomKey);
+            room.AddDoor(new Vector2(0, 1));
+            room.AddDoor(new Vector2(7, 1));
+            room.AddDoor(new Vector2(3, 0));
+            room.AddDoor(new Vector2(3, 2));
+            return room;
+        }
     }
 }
