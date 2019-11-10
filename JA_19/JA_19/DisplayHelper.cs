@@ -10,13 +10,17 @@ namespace JA_19
     {
         public static void DisplayGameState(Layout background, Room room)
         {
-            Layout graphicLayout = GraphicMerge(background, room);
-            DisplayLayout(graphicLayout);
+            Layout graphicLayout = background;
+            if (room != null)
+            {
+                graphicLayout = GraphicMerge(background, room);
+            }
+            DisplayLayout(graphicLayout, new Vector2(0,0));
         }
 
-        private static void DisplayLayout(Layout layout)
+        private static void DisplayLayout(Layout layout, Vector2 v)
         {
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(v.X, v.Y);
             int currentColor = layout.Content[0, 0];
             Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
             for (int i = 0; i < layout.Size.X; i++)
@@ -32,14 +36,6 @@ namespace JA_19
                 }
                 Console.Write("\n");
             }
-            PostBoardDisplay();
-        }
-
-        public static void PostBoardDisplay()
-        {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine("                                                                ");
-            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         private static Layout GraphicMerge(Layout bg, Room room)
@@ -79,32 +75,99 @@ namespace JA_19
 
         public enum CommandType { Select, Move}
 
-        public static void DisplayBottom(CommandType commandType)
+        public static void DisplayBottom(CommandType commandType, List<Room> roomList = null)
         {
-            Console.WriteLine("");
-
-            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("     Bedroom     ");
+            Console.WriteLine("                           ROOMS                                ");
+            Console.BackgroundColor = ConsoleColor.Black;
+
+            DisplayLegend(commandType, roomList);
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("");
+            Console.WriteLine("                                                            ");
 
             DisplayCommand(commandType);
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Black;
+
+        }
+
+        private static void DisplayLegend(CommandType commandType, List<Room> roomList)
+        {
+            if(commandType == CommandType.Move)
+            {
+                Console.WriteLine("                                                                ");
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("                           Bedroom                              ");
+
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("                           Bathroom                             ");
+
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("                           Livingroom                           ");
+
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("                           Kitchen                              ");
+
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.WriteLine("                           Garden                               ");
+
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.WriteLine("                           Corridor                             ");
+
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("                           Toilets                              ");
+
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("                           Officeroom                           ");
+
+                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("                           BaseRoom                             ");
+            }
+            else if(commandType == CommandType.Select)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("  1:                    2:                   3:                 ");
+                Console.WriteLine("                                                            ");
+                Layout l = new Layout(new Vector2(10, 32));
+                for(int i = 0; i < roomList.Count; i++)
+                {
+                    l = LayoutHelper.MergeLayouts(l, roomList[i].Layout, new Vector2(0, i * 11), roomList[i].Layout.Size);
+                }
+                DisplayLayout(l, new Vector2(0, Console.CursorTop));
+            }
         }
 
         private static void DisplayCommand(CommandType commandType)
         {
-            if(commandType == CommandType.Move)
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("                           COMMANDS                             ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                            ");
+
+            if (commandType == CommandType.Move)
             {
-                Console.WriteLine("Z,Q,S,D  : Move current room");
-                Console.WriteLine("E, A     : Rotate Room");
-                Console.WriteLine("Space    : Drop current room");
-                Console.WriteLine("N        : /!\\ NOMORESPACE /!\\");
+                Console.WriteLine("Z,Q,S,D  : Move current room                                ");
+                Console.WriteLine("E, A     : Rotate Room                                      ");
+                Console.WriteLine("Space    : Drop current room                                ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("N        : NO MORE SPACE                                    ");
+
+            }
+            else if( commandType == CommandType.Select)
+            {
+                Console.WriteLine($"Select room using number from 1 to {Settings.RoomSelectionAmount}");
+                Console.WriteLine("                                                            ");
             }
         }
     }

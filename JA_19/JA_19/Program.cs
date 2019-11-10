@@ -11,7 +11,7 @@ namespace JA_19
         //Prop & Constructors//
         static void Main(string[] args)
         {
-            Console.SetWindowSize(Settings.BackgroundSize.Y * 2 + 1, Settings.BackgroundSize.X + 15);
+            Console.SetWindowSize(Settings.BackgroundSize.Y * 2 +1, Settings.BackgroundSize.X + 25);
             GameplayLoop gl = new GameplayLoop();
             gl.MainLoop();
         }
