@@ -85,7 +85,7 @@ namespace JA_19
 
             Console.BackgroundColor = ConsoleColor.Cyan;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("     BedRoom     ");
+            Console.WriteLine("     Bedroom     ");
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
