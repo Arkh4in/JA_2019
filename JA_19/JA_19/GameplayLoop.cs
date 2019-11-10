@@ -13,6 +13,7 @@ namespace JA_19
 
         private void Init()
         {
+            _currentRoom = null;
             _background = new Layout(Settings.BackgroundSize);
             Room initRoom = RoomFactory.CreateInitRoom();
 
@@ -44,38 +45,38 @@ namespace JA_19
 
         private bool MainExecution()
         {
+            MoveResult result = MoveResult.None;
             if (_currentRoom == null)
             {
                 DisplayHelper.DisplayGameState(_background, _currentRoom);
-                _currentRoom = SelectRoom();
+                _currentRoom = SelectRoom(out result);
             }
             else
             {
                 DisplayHelper.DisplayGameState(_background, _currentRoom);
                 DisplayHelper.DisplayBottom(DisplayHelper.CommandType.Move);
-                MoveResult result;
                 Controller.Move(_currentRoom, _background, out result);
 
                 if(result == MoveResult.Placed)
                 {
                     _currentRoom = null;
                 }
-                else if( result == MoveResult.GaveUp)
-                {
-                    DisplayHelper.DisplayGameOver();
-                    return false;
-                }
+            }
+            if (result == MoveResult.GaveUp)
+            {
+                DisplayHelper.DisplayGameOver();
+                return false;
             }
             return true;
         }
 
         //Methods//
 
-        public Room SelectRoom()
+        public Room SelectRoom(out MoveResult mr)
         {
             var roomSelection = RoomSelection(Settings.RoomSelectionAmount);
             DisplayHelper.DisplayBottom(DisplayHelper.CommandType.Select, roomSelection);
-            return roomSelection[Controller.SelectRoomIndex(Settings.RoomSelectionAmount)];
+            return roomSelection[Controller.SelectRoomIndex(Settings.RoomSelectionAmount, out mr)];
         }
 
         private List<Room> RoomSelection(int roomAmount)

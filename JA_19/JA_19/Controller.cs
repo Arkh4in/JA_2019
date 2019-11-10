@@ -102,9 +102,10 @@ namespace JA_19
             return;
         }
 
-        public static int SelectRoomIndex(int roomAmount)
+        public static int SelectRoomIndex(int roomAmount, out MoveResult result)
         {
             bool b = true;
+            result = MoveResult.None;
             while (b)
             {
                 var content = Console.ReadKey();
@@ -113,10 +114,16 @@ namespace JA_19
                     c = '1';
 
                 if (c == 'é')
-                    c = '1';
+                    c = '2';
 
-                if (c == '&')
-                    c = '"';
+                if (c == '"')
+                    c = '3';
+
+                if(c == 'n')
+                {
+                    result = MoveResult.GaveUp;
+                    return 0;
+                }
 
                 int i = 0;
                 if(Int32.TryParse(c.ToString(), out i))
@@ -144,10 +151,10 @@ namespace JA_19
                     c = '1';
 
                 if (c == 'é')
-                    c = '1';
+                    c = '2';
 
-                if (c == '&')
-                    c = '"';
+                if (c == '"')
+                    c = '3';
 
                 int i = 0;
                 if (Int32.TryParse(c.ToString(), out i))
