@@ -22,6 +22,8 @@ namespace JA_19
                 initRoom.Layout,
                 new Vector2(Settings.BackgroundSize.X / 2, Settings.BackgroundSize.Y / 2 - 1),
                 initRoom.Layout.Size).Content;
+
+            DisplayHelper.DisplayGameRules();
         }
 
         public void MainLoop()
