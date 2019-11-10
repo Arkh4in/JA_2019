@@ -158,9 +158,6 @@ namespace JA_19
 
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("                           Officeroom                           ");
-
-                Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                Console.WriteLine("                           BaseRoom                             ");
             }
             else if(commandType == CommandType.Select)
             {
@@ -220,7 +217,7 @@ namespace JA_19
                 for(int i = 0; i < Settings.BackgroundSize.X; i++)
                 {
                     Console.Write($"{str[(i+j+offset) % 16]} ");
-                    Thread.Sleep((i + j % 6) <= 4 ? 1 : 0);
+                    Thread.Sleep(1);
                 }
                 Console.Write("\n");
             }

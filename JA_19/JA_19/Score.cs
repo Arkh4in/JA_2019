@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JA_19
 {
@@ -118,9 +116,10 @@ namespace JA_19
             IncreaseScore(room.Area);
             SwitchRoomTypeBoolWhenPut(room.TypeOfRoom);
             int bestScore = GetBestScore();
-            if(CurrentScore > bestScore)
+            var score = GetScore();
+            if (score > bestScore)
             {
-                SetBestScore(CurrentScore);
+                SetBestScore(score);
             }
         }
     }

@@ -21,7 +21,6 @@ namespace JA_19
         public static char CorridorKey = (char)(ConsoleColor.Gray + 97);
         public static char ToiletsKey = (char)(ConsoleColor.DarkCyan + 97);
         public static char OfficeroomKey = (char)(ConsoleColor.DarkRed + 97);
-        public static char BaseRoomKey = (char)(ConsoleColor.DarkMagenta + 97);
 
         public static char TestRoomKey = (char)(ConsoleColor.Yellow + 97);
         
