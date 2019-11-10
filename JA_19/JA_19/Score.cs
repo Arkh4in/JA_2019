@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -87,10 +88,40 @@ namespace JA_19
             return bonusRoomList;
         }
 
-        public void updateScoreOnMovement(Room room)
+        public int GetScore()
+        {
+            float f = (FromRoomtypeToBoolean.Values.Where(x => x).Count() / 10.0f);
+            return (int)(CurrentScore * (1 + f));
+        }
+
+        public int GetBestScore()
+        {
+            string path = $"{Directory.GetCurrentDirectory()}\\file.txt";
+            var str = File.ReadLines(path).FirstOrDefault();
+            int i = 0;
+            Int32.TryParse(str, out i);
+            return i;
+        }
+
+        private void SetBestScore(int i)
+        {
+            string path = $"{Directory.GetCurrentDirectory()}\\file.txt";
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+            }
+            File.WriteAllText(path, i.ToString());
+        }
+
+        public void UpdateScore(Room room)
         {
             IncreaseScore(room.Area);
             SwitchRoomTypeBoolWhenPut(room.TypeOfRoom);
+            int bestScore = GetBestScore();
+            if(CurrentScore > bestScore)
+            {
+                SetBestScore(CurrentScore);
+            }
         }
     }
 }

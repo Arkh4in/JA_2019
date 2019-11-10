@@ -36,7 +36,8 @@ namespace JA_19
                 if(i == 0)
                 {
                     Init();
-                    while (MainExecution()) { }
+                    var score = new Score();
+                    while (MainExecution(score)) { }
                 }
                 if(i == 1)
                 {
@@ -45,22 +46,23 @@ namespace JA_19
             }
         }
 
-        private bool MainExecution()
+        private bool MainExecution(Score s)
         {
             MoveResult result = MoveResult.None;
             if (_currentRoom == null)
             {
-                DisplayHelper.DisplayGameState(_background, _currentRoom);
+                DisplayHelper.DisplayGameState(_background, _currentRoom, s);
                 _currentRoom = SelectRoom(out result);
             }
             else
             {
-                DisplayHelper.DisplayGameState(_background, _currentRoom);
+                DisplayHelper.DisplayGameState(_background, _currentRoom, s);
                 DisplayHelper.DisplayBottom(DisplayHelper.CommandType.Move);
                 Controller.Move(_currentRoom, _background, out result);
 
                 if(result == MoveResult.Placed)
                 {
+                    s.UpdateScore(_currentRoom);
                     _currentRoom = null;
                 }
             }

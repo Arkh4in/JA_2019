@@ -9,14 +9,30 @@ namespace JA_19
 {
     public static class DisplayHelper
     {
-        public static void DisplayGameState(Layout background, Room room)
+        public static void DisplayGameState(Layout background, Room room, Score score)
         {
+            DisplayScore(score);
             Layout graphicLayout = background;
             if (room != null)
             {
                 graphicLayout = GraphicMerge(background, room);
             }
             DisplayLayout(graphicLayout, new Vector2(0,3));
+        }
+
+        public static void DisplayScore(Score score)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.Write("  ___  __   ___   _ _   ___   ");
+            Console.WriteLine("                     ");
+            Console.Write(" (_-< / _| / _ \\ | '_| / -_)  ");
+            Console.WriteLine("                     ");
+            Console.Write(" /__/ \\__| \\___/ |_|   \\___|  ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"  {score.GetScore()}         ");
         }
 
         private static void DisplayLayout(Layout layout, Vector2 v)
