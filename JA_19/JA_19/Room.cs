@@ -17,7 +17,9 @@ namespace JA_19
 
         public Vector2 Pos { get; set; }
 
-        public Room(Vector2 coordinates, Vector2 size, char typeKey)
+        public RoomType TypeOfRoom { get; private set; }
+
+        public Room(Vector2 coordinates, Vector2 size, char typeKey, RoomType roomtype)
         {
             Pos = coordinates;
 
@@ -34,7 +36,10 @@ namespace JA_19
                 Layout.Content[size.X-1, i] = Settings.WallKey;
             }
 
+            TypeOfRoom = roomtype;
         }
+
+
 
         public void AddDoor(Vector2 vector)
         {

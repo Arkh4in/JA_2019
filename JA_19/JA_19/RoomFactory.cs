@@ -95,7 +95,7 @@ namespace JA_19
             RoomType r = RandomizeType();
             var settings = FromRoomTypeToRoomSettings[r];
             var roomSize = CreateRandomRoomSize(settings);
-            Room room = new Room(new Vector2(0, 0), roomSize, settings.TypeKey);
+            Room room = new Room(new Vector2(0, 0), roomSize, settings.TypeKey, r);
             int doorsAmount = RandomizeDoorsAmount(settings);
 
             for (int i = 0; i < doorsAmount; i++)
@@ -111,7 +111,9 @@ namespace JA_19
             Room room = new Room(
                 new Vector2(0, 0),
                 new Vector2(8, 3),
-                Settings.BaseRoomKey);
+                Settings.BaseRoomKey,
+                RoomType.Garden);
+
             room.AddDoor(new Vector2(0, 1));
             room.AddDoor(new Vector2(7, 1));
             room.AddDoor(new Vector2(3, 0));
