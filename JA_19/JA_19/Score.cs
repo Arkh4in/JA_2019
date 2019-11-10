@@ -72,29 +72,25 @@ namespace JA_19
             FromRoomtypeToBoolean[r] = true;
         }
 
-
-
         public List<RoomType> CreateRandomBonusRoomList()
         {
-            List<RoomType> bonusRoom = new List<RoomType>();
-
-            while (bonusRoom.Count() < 4)
+            List<RoomType> bonusRoomList = new List<RoomType>();
+            
+            while (bonusRoomList.Count() < 4)
             {
                 RoomType r = RoomFactory.RandomizeType();
-                foreach (RoomType roomType in bonusRoom)
+                if(!bonusRoomList.Contains(r))
                 {
-                    if (r == roomType)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        bonusRoom.Add(r);
-                        continue;
-                    }
+                    bonusRoomList.Add(r);
                 }
             }
-            return bonusRoom;
+            return bonusRoomList;
+        }
+
+        public void updateScoreOnMovement(Room room)
+        {
+            IncreaseScore(room.Area);
+            SwitchRoomTypeBoolWhenPut(room.TypeOfRoom);
         }
     }
 }
