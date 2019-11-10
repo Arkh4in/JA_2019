@@ -38,12 +38,12 @@ namespace JA_19
         {
             return new Dictionary<RoomType, RoomSettings>()
            {
-                {RoomType.Bedroom,    new RoomSettings(4, 4, 5, 5, 1, 2, Settings.BedroomKey)},
+                {RoomType.Bedroom,    new RoomSettings(4, 4, 5, 5, 1, 3, Settings.BedroomKey)},
                 {RoomType.Bathroom,   new RoomSettings(4, 4, 5, 5, 1, 2, Settings.BathroomKey)},
-                {RoomType.Livingroom, new RoomSettings(6, 6, 9, 10, 1, 3, Settings.LivingroomKey)},
+                {RoomType.Livingroom, new RoomSettings(6, 6, 9, 10, 1, 4, Settings.LivingroomKey)},
                 {RoomType.Kitchen,    new RoomSettings(5, 5, 6, 6, 1, 2, Settings.KitchenKey)},
-                {RoomType.Garden,     new RoomSettings(7, 7, 10, 10, 2, 3, Settings.GardenKey)},
-                {RoomType.Corridor,   new RoomSettings(3, 6, 4, 10, 2, 4, Settings.CorridorKey)},
+                {RoomType.Garden,     new RoomSettings(7, 7, 10, 10, 2, 2, Settings.GardenKey)},
+                {RoomType.Corridor,   new RoomSettings(3, 6, 4, 10, 3, 4, Settings.CorridorKey)},
                 {RoomType.Toilets,    new RoomSettings(3, 3, 4, 4, 1, 1, Settings.ToiletsKey)},
                 {RoomType.Officeroom, new RoomSettings(4, 4, 5, 5, 1, 2, Settings.OfficeroomKey)},
            };

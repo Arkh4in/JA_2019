@@ -11,15 +11,15 @@ namespace JA_19
         private Room _currentRoom;
         private Layout _background;
 
-        public GameplayLoop()
+        private void Init()
         {
             _background = new Layout(Settings.BackgroundSize);
             Room initRoom = RoomFactory.CreateInitRoom();
 
             _background.Content = LayoutHelper.MergeLayouts(
-                _background, 
-                initRoom.Layout, 
-                new Vector2(Settings.BackgroundSize.X / 2, Settings.BackgroundSize.Y / 2 - 1), 
+                _background,
+                initRoom.Layout,
+                new Vector2(Settings.BackgroundSize.X / 2, Settings.BackgroundSize.Y / 2 - 1),
                 initRoom.Layout.Size).Content;
         }
 
@@ -32,6 +32,7 @@ namespace JA_19
                 i = Controller.SelectMainMenuIndex();
                 if(i == 0)
                 {
+                    Init();
                     while (MainExecution()) { }
                 }
                 if(i == 1)
