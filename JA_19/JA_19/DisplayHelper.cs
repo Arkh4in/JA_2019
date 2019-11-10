@@ -16,7 +16,7 @@ namespace JA_19
 
         private static void DisplayLayout(Layout layout)
         {
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, 8);
             int currentColor = layout.Content[0, 0];
             Console.BackgroundColor = (ConsoleColor)(currentColor - 97);
             for (int i = 0; i < layout.Size.X; i++)
@@ -32,6 +32,14 @@ namespace JA_19
                 }
                 Console.Write("\n");
             }
+            PostBoardDisplay();
+        }
+
+        public static void PostBoardDisplay()
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("                                                                ");
+            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         private static Layout GraphicMerge(Layout bg, Room room)

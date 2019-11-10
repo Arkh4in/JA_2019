@@ -55,14 +55,14 @@ namespace JA_19
         //Cryptic
         public static bool IsDoorValid(Layout bg, Room room)
         {
-            var doors = room.Layout.DoorCoordinatesList;
-            foreach (var v in doors)
+            var doorsPos = room.Layout.DoorCoordinatesList;
+            foreach (var p in doorsPos)
             {
-                int minX = Math.Max(0, v.X + -1 + room.Pos.X);
-                int minY = Math.Max(0, v.Y + -1 + room.Pos.Y);
+                int minX = Math.Max(0, p.X + -1 + room.Pos.X);
+                int minY = Math.Max(0, p.Y + -1 + room.Pos.Y);
 
-                int maxX = Math.Min(bg.Size.X - 1, v.X + 1 + room.Pos.X);
-                int maxY = Math.Min(bg.Size.Y - 1, v.Y + 1 + room.Pos.Y);
+                int maxX = Math.Min(bg.Size.X - 1, p.X + 1 + room.Pos.X);
+                int maxY = Math.Min(bg.Size.Y - 1, p.Y + 1 + room.Pos.Y);
 
                 for (int i = minX; i <= maxX; i++)
                 {
@@ -70,7 +70,10 @@ namespace JA_19
                     {
                         if (bg.Content[i, j] == Settings.DoorKey)
                         {
-                            return i == v.X + room.Pos.X || j == v.Y + room.Pos.Y;
+                            if (i == p.X + room.Pos.X || j == p.Y + room.Pos.Y)
+                            {
+                                return true;
+                            }
                         }
                     }
                 }
